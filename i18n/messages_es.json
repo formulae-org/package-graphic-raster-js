@@ -1,0 +1,288 @@
+{
+	"pathGraphics" : "Imagen",
+
+	"nameRasterGraphics" : "Imagen",
+
+	"leafFromFile" : "Importar desde archivo",
+
+	"nameCreateRasterGraphics"     : "Crear imagen",
+	"mnemonicCreateRasterGraphics" : "CrearImagen",
+	"childrenCreateRasterGraphics" : [ "Ancho", "Alto", "Color de fondo" ],
+	"leafCreateRasterGraphics"     : "Crear imágen",
+
+	"nameCopyRasterGraphics"     : "Copia de imagen",
+	"mnemonicCopyRasterGraphics" : "CopiarImagen",
+	"childCopyRasterGraphics"    : "Imagen a ser copiada",
+	"leafCopyRasterGraphics"     : "Copiar imagen",
+
+	"nameGetSize"     : "Tamaño de imagen",
+	"mnemonicGetSize" : "TamañoImagen",
+	"childGetSize"    : "Imágen",
+	"leafGetSize"     : "Tamaño de imagen",
+
+	"namePainter"    : "Pintor de imágen",
+	"literalPainter" : "<pintor>",
+
+	"nameGetPainter"     : "Obtención de pintor de imágen",
+	"mnemonicGetPainter" : "ObtenerPintor",
+	"childGetPainter"    : "La imagen",
+	"leafGetPainter"     : "Obtener pintor",
+
+	"pathPixels" : "Imagen.Operaciones con pixeles",
+
+	"nameGetPixel"     : "Obtención del color de pixel en imagen",
+	"mnemonicGetPixel" : "ObtenerPixel",
+	"childrenGetPixel" : [ "El pintor", "coordenada x", "coordenada y" ],
+	"leafGetPixel"     : "Obtener pixel",
+
+	"nameSetPixel"     : "Fijar un pixel en una imágen",
+	"mnemonicSetPixel" : "FijarPixel",
+	"childrenSetPixel" : [ "El pintor", "coordenada x", "coordenada y", "Color" ],
+	"leafSetPixel"     : "Fijar pixel",
+
+	"pathLines" : "Imagen.Línea",
+
+	"nameDrawLinePosPos"     : "Dibujar línea de posición a posición",
+	"mnemonicDrawLinePosPos" : "DibujarLíneaPosPos",
+	"childrenDrawLinePosPos" : [ "Pintor", "X inicial", "Y inicial", "X final", "Y final" ],
+	"leafDrawLinePosPos"     : "Dibujar línea de posición a posición",
+
+	"nameDrawLinePosOffset"     : "Dibujar línea de posición a desplazamiento",
+	"mnemonicDrawLinePosOffset" : "DibujarLineaPosDesplazamiento",
+	"childrenDrawLinePosOffset" : [ "Pintor", "X inicial", "Y inicial", "Desplazamiento x", "Desplazamiento y" ],
+	"leafDrawLinePosOffset"     : "Dibujar línea de posición a desplazamiento",
+
+	"nameDrawLineToPos"     : "Dibujar línea de última posición a posición",
+	"mnemonicDrawLineToPos" : "DibujarLineaAPosición",
+	"childrenDrawLineToPos" : [ "Pintor", "Posición x", "Posición y" ],
+	"leafDrawLineToPos"     : "Dibujar línea de última posición a posición",
+
+	"nameDrawLineToOffset"     : "Dibujar línea de última posición a desplazamiento",
+	"mnemonicDrawLineToOffset" : "DibujarLíneaADesplazamiento",
+	"childrenDrawLineToOffset" : [ "Pintor", "Desplazamiento x", "Desplazamiento y" ],
+	"leafDrawLineToOffset"     : "Dibujar línea de última posición a desplazamiento",
+
+	"nameGetPos"     : "Obtener de la posición actual del pintor en imagen",
+	"mnemonicGetPos" : "ObtenerPosición",
+	"childGetPos"    : "El pintor",
+	"leafGetPos"     : "Obtener posición",
+
+	"nameSetPos"     : "Fijar posición actual",
+	"mnemonicSetPos" : "FijarPosición",
+	"childrenSetPos" : [ "Pintor", "Coordenada x", "Coordenada y" ],
+	"leafSetPos"     : "Fijar posición actual",
+
+	"nameOffsetPos"     : "Desplazar posición actual",
+	"mnemonicOffsetPos" : "DesplazarPosición",
+	"childrenOffsetPos" : [ "Pintor", "Desplazamiento x", "Desplazamiento y" ],
+	"leafOffsetPos"     : "Desplazar posición actual",
+
+	"nameSetColor"     : "Fijar color",
+	"mnemonicSetColor" : "FijarColor",
+	"childrenSetColor" : [ "Pintor", "Color" ],
+	"leafSetColor"     : "Fijar color",
+
+	"nameGetColor"     : "Obtener color",
+	"mnemonicGetColor" : "ObtenerColor",
+	"childGetColor"    : "Pintor",
+	"leafGetColor"     : "Obtener color",
+
+	"pathRectangle" : "Imagen.Ractángulo",
+
+	"nameDrawRectanglePosPos"     : "Dibujar rectángulo de esquina a esquina",
+	"mnemonicDrawRectanglePosPos" : "DibujarRectánguloPosPos",
+	"leafDrawRectanglePosPos"     : "Dibujar rectángulo de esquina a esquina",
+	"childrenRectanglePosPos"     : [ "Pintor", "X inicial", "Y inicial", "X final", "Y final" ],
+
+	"nameDrawRectanglePosSize"     : "Dibujar rectángulo de esquina a tamaño",
+	"mnemonicDrawRectanglePosSize" : "DibujarRectánguloPosTamaño",
+	"leafDrawRectanglePosSize"     : "Dibujar rectángulo de esquina a tamaño",
+	"childrenRectanglePosSize"     : [ "Pintor", "X inicial", "Y inicial", "Ancho", "Alto" ],
+
+	"nameFillRectanglePosPos"     : "Rellenar rectángulo de esquina a esquina",
+	"mnemonicFillRectanglePosPos" : "RellenarRectánguloPosPos",
+	"leafFillRectanglePosPos"     : "Rellenar rectángulo de esquina a esquina",
+
+	"nameFillRectanglePosSize"     : "Rellenar recatángulo de esquina a tamaño",
+	"mnemonicFillRectanglePosSize" : "RellenarRectánguloPosTamaño",
+	"leafFillRectanglePosSize"     : "Rellenar rectángulo de esquina a tamaño",
+
+	"pathEllipse" : "Imagen.Círculo/Elipse",
+
+	"nameDrawEllipsePosPos"     : "Dibujar elipse de esquina a esquina",
+	"mnemonicDrawEllipsePosPos" : "DibujarElipsePosPos",
+	"childrenEllipsePosPos"     : [ "Pintor", "X inicial", "Y inicial", "X final", "Y final" ],
+	"leafDrawEllipsePosPos"     : "Dibujar elipse de esquina a esquina",
+
+	"nameDrawEllipsePosSize"     : "Dibujar elipse de esquina a tamaño",
+	"mnemonicDrawEllipsePosSize" : "DibujarElipsePosTamaño",
+	"childrenEllipsePosSize"     : [ "Pintor", "X inicial", "Y inicial", "Ancho", "Alto" ],
+	"leafDrawEllipsePosSize"     : "Dibujar elipse de esquina a tamaño",
+
+	"nameDrawEllipseCenterRadius"     : "Dibujar elipse dados centro y radio",
+	"mnemonicDrawEllipseCenterRadius" : "DibujarElipseCentroRadio",
+	"childrenEllipseCenterRadius"     : [ "Pintor", "X centro", "Y centro", "Radio" ],
+	"leafDrawEllipseCenterRadius"     : "Dibujar elipse dados centro y radio",
+
+	"nameFillEllipsePosPos"     : "Rellenar elipse de esquina a esquina",
+	"mnemonicFillEllipsePosPos" : "RellenarElipsePosPos",
+	"leafFillEllipsePosPos"     : "Rellenar elipse de esquina a esquina",
+
+	"nameFillEllipsePosSize"     : "Rellenar elipse de esquina a tamaño",
+	"mnemonicFillEllipsePosSize" : "RellenarElipsePosTamaño",
+	"leafFillEllipsePosSize"     : "Rellenar elipse de esquina a tamaño",
+
+	"nameFillEllipseCenterRadius"     : "Rellenar elipse dados centro y radio",
+	"mnemonicFillEllipseCenterRadius" : "RellenarElipseCentroRadio",
+	"leafFillEllipseCenterRadius"     : "Rellenar elipse dados centro y radio",
+
+	"pathArc" : "Imagen.Arco",
+
+	"nameDrawArcPosPos"     : "Dibujar arco de esquina a esquina",
+	"mnemonicDrawArcPosPos" : "DibujarArcoPosPos",
+	"childrenArcPosPos"     : [ "Pintor", "X inicial", "Y inicial", "X final", "Y final", "Ángulo inicial", "Ángulo final" ],
+	"leafDrawArcPosPos"     : "Dibujar arco de esquina a esquina",
+
+	"nameDrawArcPosSize"     : "Dibujar arco de esquina a tamaño",
+	"mnemonicDrawArcPosSize" : "DibujarArcoPosTamaño",
+	"childrenArcPosSize"     : [ "Pintor", "X inicial", "Y inicial", "Ancho", "Alto", "Ángulo inicial", "Ángulo final" ],
+	"leafDrawArcPosSize"     : "Dibujar arco de esquina a tamaño",
+
+	"nameDrawArcCenterRadius"     : "Dibujar arco dado centro y radio",
+	"mnemonicDrawArcCenterRadius" : "DrawArcCentroRadio",
+	"childrenArcCenterRadius"     : [ "Pintor", "X centro", "Y centro", "Radio", "Ángulo inicial", "Ángulo final" ],
+	"leafDrawArcCenterRadius"     : "Dibujar arco dado centro y radio",
+
+	"nameFillArcPosPos"     : "Rellenar arco de esquina a esquina",
+	"mnemonicFillArcPosPos" : "RellenarArcoPosPos",
+	"leafFillArcPosPos"     : "Rellenar arco de esquina a esquina",
+
+	"nameFillArcPosSize"     : "Rellenar arco de esquina a tamaño",
+	"mnemonicFillArcPosSize" : "RellenarArcoPosTamaño",
+	"leafFillArcPosSize"     : "Rellenar arco de esquina a tamaño",
+
+	"nameFillArcCenterRadius"     : "Rellenar arco dados centro y radio",
+	"mnemonicFillArcCenterRadius" : "RellenarArcoCentroRadio",
+	"leafFillArcCenterRadius"     : "Rellenar arco dados centro y radio",
+
+	"pathImage" : "Imagen.Imagen",
+
+	"nameDrawImage"     : "Dibujar imágen",
+	"mnemonicDrawImage" : "DibujarImagen",
+	"childrenDrawImage" : [ "Pintor", "Imágen", "Posición x", "Posición y" ],
+	"leafDrawImage"     : "Dibujo de imágen",
+
+	"pathText" : "Imagen.Texto",
+
+	"nameGetTextWidth"     : "Obtener ancho de texto",
+	"mnemonicGetTextWidth" : "ObtenerAnchoTexto",
+	"childrenGetTextWidth" : [ "El pintor", "Texto" ],
+	"leafGetTextWidth"     : "Obtener el ancho de texto",
+
+	"nameDrawText"     : "Dibujar texto",
+	"mnemonicDrawText" : "DibujarTexto",
+	"childrenDrawText" : [ "El pintor", "Texto", "Posición x", "Posición y" ],
+	"leafDrawText"     : "Dibujar texto",
+
+	"pathTurtle" : "Imagen.Tortuga",
+
+	"nameGetAngle"     : "Obtención el ángulo actual del pintor de imagen",
+	"mnemonicGetAngle" : "ObtenerÁngulo",
+	"childGetAngle"    : "Pintor",
+	"leafGetAngle"     : "Obtener ángulo",
+
+	"nameSetAngle"     : "Fijar ángulo del pintor de imagen",
+	"mnemonicSetAngle" : "FijarÁngulo",
+	"childrenSetAngle" : [ "Pintor", "Angulo (grados)" ],
+	"leafSetAngle"     : "Fijar ángulo",
+
+	"nameForwardDrawing"     : "Avanzar dibujando",
+	"mnemonicForwardDrawing" : "AvanzarDibujando",
+	"childrenForwardDrawing" : [ "Pintor", "Unidades a avanzar" ],
+	"leafForwardDrawing"     : "Avanzar dibujando",
+
+	"nameForward"     : "Avanzar",
+	"mnemonicForward" : "Avanzar",
+	"childrenForward" : [ "Pintor", "Unidades a avanzar" ],
+	"leafForward"     : "Avanzar",
+
+	"nameTurn"     : "Girar",
+	"mnemonicTurn" : "Girar",
+	"childrenTurn" : [ "Pintor", "Ángulo en grados a girar" ],
+	"leafTurn"     : "Girar",
+
+	"pathCoordinates" : "Imagen.Coordenadas",
+
+	"nameResetCoordinates"     : "Reiniciar coordenadas",
+	"mnemonicResetCoordinates" : "ReiniciarCoordenadas",
+	"childResetCoordinates"    : "Pintor",
+	"leafResetCoordinates"     : "Reiniciar coordenadas",
+
+	"nameAddTranslation"     : "Añadir translación",
+	"mnemonicAddTranslation" : "AñadirTranslación",
+	"childrenAddTranslation" : [ "Pintor", "Desplazamiento x", "Desplazamiento y" ],
+	"leafAddTranslation"     : "Añadir translación",
+
+	"nameAddScaling"     : "Añadir escala",
+	"mnemonicAddScaling" : "AñadirEscala",
+	"childrenAddScaling" : [ "Pintor", "Factor x", "Factor y" ],
+	"leafAddScaling"     : "Añadir escala",
+
+	"nameAddRotation"     : "Añadir rotación",
+	"mnemonicAddRotation" : "AñadirRotación",
+	"childrenAddRotation" : [ "Pintor", "ángulo" ],
+	"leafAddRotation"     : "Añadir rotación",
+	
+	"nameSetCoordinatesPixels0Based"     : "Fijar coordenadas para pixeles basados en 0",
+	"mnemonicSetCoordinatesPixels0Based" : "FijarCoordenadasPixelesBasados0",
+	"childSetCoordinatesPixels0Based"    : "Pintor",
+	"leafSetCoordinatesPixels0Based"     : "Fijar coordenadas para pixeles basados en 0",
+
+	"nameSetCoordinatesPixels1Based"     : "Fijar coordenadas para pixeles basados en 1",
+	"mnemonicSetCoordinatesPixels1Based" : "FijarCoordenadasPixelesBasados1",
+	"childSetCoordinatesPixels1Based"    : "Pintor",
+	"leafSetCoordinatesPixels1Based"     : "Fijar coordenadas para pixeles basados en 0",
+
+	"nameSetCoordinatesMath"     : "Fijar coordenadas matemáticas",
+	"mnemonicSetCoordinatesMath" : "FijarCoordenadasMatemáticas",
+	"childrenSetCoordinatesMath" : [ "Pintor", "x esquina inferior izquierda", "y esquina inferior izquierda", "x esquina superior derecha", "y esquina superior derecha" ],
+	"leafSetCoordinatesMath"     : "Fijar coordenadas matemáticas",
+
+	"pathState": "Imágen.Estado",
+
+	"nameSetAntialias"     : "Fijar no solapamiento",
+	"mnemonicSetAntialias" : "FijarNoSolapamiento",
+	"childrenSetAntialias" : [ "El pintor", "Valor lógico" ],
+	"leafSetAntialias"     : "Fijar no solapamiento",
+
+	"nameSetStrokeWidth"     : "Fijar ancho de trazo",
+	"mnemonicSetStrokeWidth" : "FijarAnchoTrazo",
+	"childrenSetStrokeWidth" : [ "Pintor", "Ancho" ],
+	"leafSetStrokeWidth"     : "Fijar ancho de trazo",
+
+	"nameSetStrokeAffectedByScale"     : "Fijar trazo afectado por escala",
+	"mnemonicSetStrokeAffectedByScale" : "FijarTrazoAfectadoPorEscala",
+	"childrenStrokeAffectedByScale" : [ "Pintor", "Valor lógico" ],
+	"leafSetStrokeAffectedByScale"     : "Fijar trazo afectado por escala",
+
+	"nameSetPaintMode"     : "Fijar modo pintura",
+	"mnemonicSetPaintMode" : "FijarModoPintura",
+	"childSetPaintMode"    : "Pintor",
+	"leafSetPaintMode"     : "Fijar modo pintura",
+
+	"nameSetXORMode"     : "Fijar modo XOR",
+	"mnemonicSetXORMode" : "FijarModoXOR",
+	"childSetXORMode"    : "Pintor",
+	"leafSetXORMode"     : "Fijar modo XOR",
+
+	"nameSetDrawingArcOpen"     : "Fijar dibujo de arco abierto",
+	"mnemonicSetDrawingArcOpen" : "FijarDibujoArcoAbierto",
+	"childSetDrawingArcOpen"    : "Pintor",
+	"leafSetDrawingArcOpen"     : "Fijar dibujo de arco abierto",
+
+	"nameSetDrawingArcAsPie"     : "Fijar dibujo de arco como sector",
+	"mnemonicSetDrawingArcAsPie" : "Fijar dibujo de arco como sector",
+	"childSetDrawingArcAsPie"    : "Pintor",
+	"leafSetDrawingArcAsPie"     : "Fijar dibujo de arco como sector"
+}
+

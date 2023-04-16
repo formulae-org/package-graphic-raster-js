@@ -1,0 +1,288 @@
+{
+	"pathGraphics" : "Graphics",
+
+	"nameRasterGraphics" : "Raster graphics",
+
+	"leafFromFile" : "Import from file",
+
+	"nameCreateRasterGraphics"     : "Create raster graphics",
+	"mnemonicCreateRasterGraphics" : "CreateRasterGraphics",
+	"childrenCreateRasterGraphics" : [ "Width", "Height", "Background color" ],
+	"leafCreateRasterGraphics"     : "Create raster",
+
+	"nameCopyRasterGraphics"     : "Copy of a raster graphics",
+	"mnemonicCopyRasterGraphics" : "CopyRasterGraphics",
+	"childCopyRasterGraphics"    : "The raster graphics to be copied",
+	"leafCopyRasterGraphics"     : "Copy raster",
+
+	"nameGetSize"     : "Get size of a raster graphics",
+	"mnemonicGetSize" : "GetSize",
+	"childGetSize"    : "The painter",
+	"leafGetSize"     : "Get size of raster",
+
+	"namePainter"    : "A raster graphics painter",
+	"literalPainter" : "<painter>",
+
+	"nameGetPainter"     : "Get the painter of a raster graphics",
+	"mnemonicGetPainter" : "GetPainter",
+	"childGetPainter"    : "The raster graphics",
+	"leafGetPainter"     : "Get painter",
+
+	"pathPixels" : "Graphics.Pixel operations",
+
+	"nameGetPixel"     : "Get the pixel of a raster graphics",
+	"mnemonicGetPixel" : "GetPixel",
+	"childrenGetPixel" : [ "The painter", "x coordinate", "y coordinate" ],
+	"leafGetPixel"     : "Get pixel",
+
+	"nameSetPixel"     : "Set the pixel on a raster graphics",
+	"mnemonicSetPixel" : "SetPixel",
+	"childrenSetPixel" : [ "The painter", "x coordinate", "y coordinate", "Color" ],
+	"leafSetPixel"     : "Set pixel",
+
+	"pathLines" : "Graphics.Line",
+
+	"nameDrawLinePosPos"     : "Draw a line from position to position",
+	"mnemonicDrawLinePosPos" : "DrawLinePosPos",
+	"childrenDrawLinePosPos" : [ "The painter", "Starting x", "Starting y", "Ending x", "Ending y" ],
+	"leafDrawLinePosPos"     : "Draw a line from position to position",
+
+	"nameDrawLinePosOffset"     : "Draw a line from position to offset",
+	"mnemonicDrawLinePosOffset" : "DrawLinePosOffset",
+	"childrenDrawLinePosOffset" : [ "The painter", "Starting x", "Starting y", "Offset x", "Offset y" ],
+	"leafDrawLinePosOffset"     : "Draw a line from position to offset",
+
+	"nameDrawLineToPos"     : "Draw a line from last position to position",
+	"mnemonicDrawLineToPos" : "DrawLineToPos",
+	"childrenDrawLineToPos" : [ "The painter", "Position x", "Position y" ],
+	"leafDrawLineToPos"     : "Draw a line from last position to position",
+
+	"nameDrawLineToOffset"     : "Draw a line from last position to offset",
+	"mnemonicDrawLineToOffset" : "DrawLineToOffset",
+	"childrenDrawLineToOffset" : [ "The painter", "Offset x", "Offset y" ],
+	"leafDrawLineToOffset"     : "Draw a line from last position to offset",
+
+	"nameGetPos"     : "Get current position",
+	"mnemonicGetPos" : "GetPos",
+	"childGetPos"    : "The painter",
+	"leafGetPos"     : "Get current position",
+
+	"nameSetPos"     : "Set current position",
+	"mnemonicSetPos" : "SetPos",
+	"childrenSetPos" : [ "The painter", "x coordinate", "y coordinate" ],
+	"leafSetPos"     : "Set current position",
+
+	"nameOffsetPos"     : "Offset current position",
+	"mnemonicOffsetPos" : "OffsetPos",
+	"childrenOffsetPos" : [ "The painter", "Offset x", "Offset y" ],
+	"leafOffsetPos"     : "Offset current position",
+
+	"nameSetColor"     : "Set color",
+	"mnemonicSetColor" : "SetColor",
+	"childrenSetColor" : [ "A painter", "A color" ],
+	"leafSetColor"     : "Set color",
+
+	"nameGetColor"     : "Get color",
+	"mnemonicGetColor" : "GetColor",
+	"childGetColor"    : "A painter",
+	"leafGetColor"     : "Get color",
+
+	"pathRectangle" : "Graphics.Rectangle",
+
+	"nameDrawRectanglePosPos"     : "Draw rectangle from corner to corner",
+	"mnemonicDrawRectanglePosPos" : "DrawRectanglePosPos",
+	"leafDrawRectanglePosPos"     : "Draw rectangle from corner to corner",
+	"childrenRectanglePosPos"     : [ "A painter", "Starting x", "Starting y", "Ending x", "Ending y" ],
+
+	"nameDrawRectanglePosSize"     : "Draw rectangle from corner to size",
+	"mnemonicDrawRectanglePosSize" : "DrawRectanglePosSize",
+	"leafDrawRectanglePosSize"     : "Draw rectangle from corner to size",
+	"childrenRectanglePosSize"     : [ "A painter", "Starting x", "Starting y", "Width", "Height" ],
+
+	"nameFillRectanglePosPos"     : "Fill solid rectangle from corner to corner",
+	"mnemonicFillRectanglePosPos" : "FillRectanglePosPos",
+	"leafFillRectanglePosPos"     : "Fill solid rectangle from corner to corner",
+
+	"nameFillRectanglePosSize"     : "Fill solid rectangle from corner to size",
+	"mnemonicFillRectanglePosSize" : "FillRectanglePosSize",
+	"leafFillRectanglePosSize"     : "Fill solid rectangle from corner to size",
+
+	"pathEllipse" : "Graphics.Circle/Ellipse",
+
+	"nameDrawEllipsePosPos"     : "Draw ellipse from corner to corner",
+	"mnemonicDrawEllipsePosPos" : "DrawEllipsePosPos",
+	"childrenEllipsePosPos"     : [ "A painter", "Starting x", "Starting y", "Ending x", "Ending y" ],
+	"leafDrawEllipsePosPos"     : "Draw ellipse from corner to corner",
+
+	"nameDrawEllipsePosSize"     : "Draw ellipse from corner to size",
+	"mnemonicDrawEllipsePosSize" : "DrawEllipsePosSize",
+	"childrenEllipsePosSize"     : [ "A painter", "Starting x", "Starting y", "Width", "Height" ],
+	"leafDrawEllipsePosSize"     : "Draw ellipse from corner to size",
+
+	"nameDrawEllipseCenterRadius"     : "Draw ellipse given center and radius",
+	"mnemonicDrawEllipseCenterRadius" : "DrawEllipseCenterRadius",
+	"childrenEllipseCenterRadius"     : [ "A painter", "Center x", "Center y", "Radius" ],
+	"leafDrawEllipseCenterRadius"     : "Draw ellipse given center and radius",
+
+	"nameFillEllipsePosPos"     : "Fill ellipse from corner to corner",
+	"mnemonicFillEllipsePosPos" : "FillEllipsePosPos",
+	"leafFillEllipsePosPos"     : "Fill ellipse from corner to corner",
+
+	"nameFillEllipsePosSize"     : "Fill ellipse from corner to size",
+	"mnemonicFillEllipsePosSize" : "FillEllipsePosSize",
+	"leafFillEllipsePosSize"     : "Fill ellipse from corner to size",
+
+	"nameFillEllipseCenterRadius"     : "Fill ellipse given center and radius",
+	"mnemonicFillEllipseCenterRadius" : "FillEllipseCenterRadius",
+	"leafFillEllipseCenterRadius"     : "Fill ellipse given center and radius",
+
+	"pathArc" : "Graphics.Arc",
+
+	"nameDrawArcPosPos"     : "Draw arc from corner to corner",
+	"mnemonicDrawArcPosPos" : "DrawArcPosPos",
+	"childrenArcPosPos"     : [ "A painter", "Starting x", "Starting y", "Ending x", "Ending y", "Starting angle", "Ending angle" ],
+	"leafDrawArcPosPos"     : "Draw arc from corner to corner",
+
+	"nameDrawArcPosSize"     : "Draw arc from corner to size",
+	"mnemonicDrawArcPosSize" : "DrawArcPosSize",
+	"childrenArcPosSize"     : [ "A painter", "Starting x", "Starting y", "Width", "Height", "Starting angle", "Ending angle" ],
+	"leafDrawArcPosSize"     : "Draw arc from corner to size",
+
+	"nameDrawArcCenterRadius"     : "Draw arc given center and radius",
+	"mnemonicDrawArcCenterRadius" : "DrawArcCenterRadius",
+	"childrenArcCenterRadius"     : [ "A painter", "Center x", "Center y", "Radius", "Starting angle", "Ending angle" ],
+	"leafDrawArcCenterRadius"     : "Draw arc given center and radius",
+
+	"nameFillArcPosPos"     : "Fill arc from corner to corner",
+	"mnemonicFillArcPosPos" : "FillArcPosPos",
+	"leafFillArcPosPos"     : "Fill arc from corner to corner",
+
+	"nameFillArcPosSize"     : "Fill arc from corner to size",
+	"mnemonicFillArcPosSize" : "FillArcPosSize",
+	"leafFillArcPosSize"     : "Fill arc from corner to size",
+
+	"nameFillArcCenterRadius"     : "Fill arc given center and radius",
+	"mnemonicFillArcCenterRadius" : "FillArcCenterRadius",
+	"leafFillArcCenterRadius"     : "Fill arc given center and radius",
+
+	"pathImage" : "Graphics.Image",
+
+	"nameDrawImage"     : "Draw an image",
+	"mnemonicDrawImage" : "DrawImage",
+	"childrenDrawImage" : [ "A painter", "Image", "Starting x", "Starting y" ],
+	"leafDrawImage"     : "Draw image",
+
+	"pathText" : "Graphics.Text",
+
+	"nameGetTextWidth"     : "Get the width of text when drawing",
+	"mnemonicGetTextWidth" : "GetTextWidth",
+	"childrenGetTextWidth" : [ "A painter", "Text" ],
+	"leafGetTextWidth"     : "Get the width of text when drawing",
+
+	"nameDrawText"     : "Draw text",
+	"mnemonicDrawText" : "DrawText",
+	"childrenDrawText" : [ "A painter", "Text", "Starting x", "Starting y" ],
+	"leafDrawText"     : "Draw text",
+
+	"pathTurtle" : "Graphics.Turtle",
+
+	"nameGetAngle"     : "Get the current angle a raster graphics",
+	"mnemonicGetAngle" : "GetAngle",
+	"childGetAngle"    : "The painter",
+	"leafGetAngle"     : "Get current angle",
+
+	"nameSetAngle"     : "Set current angle",
+	"mnemonicSetAngle" : "SetAngle",
+	"childrenSetAngle" : [ "A painter", "An angle" ],
+	"leafSetAngle"     : "Set current angle",
+
+	"nameForwardDrawing"     : "Forward drawing",
+	"mnemonicForwardDrawing" : "ForwardDrawing",
+	"childrenForwardDrawing" : [ "A painter", "Units to advance" ],
+	"leafForwardDrawing"     : "Forward drawing",
+
+	"nameForward"     : "Forward",
+	"mnemonicForward" : "Forward",
+	"childrenForward" : [ "A painter", "Units to advance" ],
+	"leafForward"     : "Forward",
+
+	"nameTurn"     : "Turn",
+	"mnemonicTurn" : "Turn",
+	"childrenTurn" : [ "A painter", "angle to turn" ],
+	"leafTurn"     : "Turn",
+
+	"pathCoordinates" : "Graphics.Coordinates",
+
+	"nameResetCoordinates"     : "Reset coordinates",
+	"mnemonicResetCoordinates" : "ResetCoordinates",
+	"childResetCoordinates"    : "A painter",
+	"leafResetCoordinates"     : "Reset coordinates",
+
+	"nameAddTranslation"     : "Add translation",
+	"mnemonicAddTranslation" : "AddTranslation",
+	"childrenAddTranslation" : [ "A painter", "x offset x", "y offset y" ],
+	"leafAddTranslation"     : "Add translation",
+
+	"nameAddScaling"     : "Add scaling",
+	"mnemonicAddScaling" : "AddScale",
+	"childrenAddScaling" : [ "A painter", "x factor", "y factor" ],
+	"leafAddScaling"     : "Add scaling",
+
+	"nameAddRotation"     : "Add rotation",
+	"mnemonicAddRotation" : "AddRotation",
+	"childrenAddRotation" : [ "A painter", "angle" ],
+	"leafAddRotation"     : "Add rotation",
+	
+	"nameSetCoordinatesPixels0Based"     : "Set coordinates for pixels 0-based",
+	"mnemonicSetCoordinatesPixels0Based" : "SetCoordinatesPixel0Based",
+	"childSetCoordinatesPixels0Based"    : "A painter",
+	"leafSetCoordinatesPixels0Based"     : "Set coordinates for pixels 0-based",
+
+	"nameSetCoordinatesPixels1Based"     : "Set coordinates for pixels 1-based",
+	"mnemonicSetCoordinatesPixels1Based" : "SetCoordinatesPixel1Based",
+	"childSetCoordinatesPixels1Based"    : "A painter",
+	"leafSetCoordinatesPixels1Based"     : "Set coordinates for pixels 1-based",
+
+	"nameSetCoordinatesMath"     : "Set coordinates for math",
+	"mnemonicSetCoordinatesMath" : "SetCoordinatesMath",
+	"childrenSetCoordinatesMath" : [ "A painter", "left bottom x", "left bottom y", "rigth top x", "right top y" ],
+	"leafSetCoordinatesMath"     : "Set coordinates for math",
+
+	"pathState": "Graphics.State",
+
+	"nameSetAntialias"     : "Set antialias",
+	"mnemonicSetAntialias" : "SetAntialias",
+	"childrenSetAntialias" : [ "The painter", "A logical value" ],
+	"leafSetAntialias"     : "Set antialias",
+
+	"nameSetStrokeWidth"     : "Set stroke width",
+	"mnemonicSetStrokeWidth" : "SetStrokeWidth",
+	"childrenSetStrokeWidth" : [ "The painter", "Width" ],
+	"leafSetStrokeWidth"     : "Set stroke width",
+
+	"nameSetStrokeAffectedByScale"     : "Set stroke affected by scale",
+	"mnemonicSetStrokeAffectedByScale" : "SetStrokeAffectedByScale",
+	"childrenStrokeAffectedByScale" : [ "The painter", "A logical value" ],
+	"leafSetStrokeAffectedByScale"     : "Set stroke affected by scale",
+
+	"nameSetPaintMode"     : "Set paint mode",
+	"mnemonicSetPaintMode" : "SetPaintMode",
+	"childSetPaintMode"    : "A painter",
+	"leafSetPaintMode"     : "Set paint mode",
+
+	"nameSetXORMode"     : "Set XOR mode",
+	"mnemonicSetXORMode" : "SetXORMode",
+	"childSetXORMode"    : "A painter",
+	"leafSetXORMode"     : "Set XOR mode",
+
+	"nameSetDrawingArcOpen"     : "Set drawing arc open",
+	"mnemonicSetDrawingArcOpen" : "SetDrawingArcOpen",
+	"childSetDrawingArcOpen"    : "A painter",
+	"leafSetDrawingArcOpen"     : "Set drawing arc open",
+
+	"nameSetDrawingArcAsPie"     : "Set drawing arc as pie",
+	"mnemonicSetDrawingArcAsPie" : "SetDrawingArcAsPie",
+	"childSetDrawingArcAsPie"    : "A painter",
+	"leafSetDrawingArcAsPie"     : "Set drawing arc as pie"
+}
+
