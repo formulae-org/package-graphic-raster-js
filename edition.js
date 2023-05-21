@@ -20,6 +20,31 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 export class Graphics extends Formulae.Package {}
 
+Graphics.loadImage = function(object, src) {
+	return new Promise(
+		function(resolve, reject) {
+			let image = new Image();
+			
+			image.onload = function() {
+				let canvas = document.createElement("canvas");
+				canvas.width = image.width;
+				canvas.height = image.height;
+				let context = canvas.getContext("2d");
+				context.drawImage(image, 0, 0);
+				object.set("Value", context);
+				
+				resolve(true);
+			};
+			
+			image.onerror = function() {
+				reject();
+			};
+			
+			image.src = src;
+		}
+	);
+}
+
 Graphics.editionFromFile = function() {
 	let input = document.createElement("input");
 	input.type = "file";
