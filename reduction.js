@@ -1339,63 +1339,62 @@ Graphics.drawText = async (drawText, session) => {
 };
 
 Graphics.setReducers = () => {
-	ReductionManager.addReducer("Graphics.CreateRasterGraphics", Graphics.createRasterGraphics);
-	ReductionManager.addReducer("Graphics.CopyRasterGraphics",   Graphics.copyRasterGraphics);
-	ReductionManager.addReducer("Graphics.GetSize",              Graphics.getSize);
-	//ReductionManager.addReducer("Graphics.GetPainter",           Graphics.getPainter);
+	ReductionManager.addReducer("Graphics.CreateRasterGraphics", Graphics.createRasterGraphics, "Graphics.createRasterGraphics");
+	ReductionManager.addReducer("Graphics.CopyRasterGraphics",   Graphics.copyRasterGraphics,   "Graphics.copyRasterGraphics");
+	ReductionManager.addReducer("Graphics.GetSize",              Graphics.getSize,              "Graphics.getSize");
 	
-	ReductionManager.addReducer("Graphics.GetPixel", Graphics.getPixel);
-	ReductionManager.addReducer("Graphics.SetPixel", Graphics.setPixel);
+	ReductionManager.addReducer("Graphics.GetPixel", Graphics.getPixel, "Graphics.getPixel");
+	ReductionManager.addReducer("Graphics.SetPixel", Graphics.setPixel, "Graphics.setPixel");
 	
-	ReductionManager.addReducer("Graphics.DrawLinePosPos",    Graphics.drawLine);
-	ReductionManager.addReducer("Graphics.DrawLinePosOffset", Graphics.drawLine);
-	ReductionManager.addReducer("Graphics.DrawLineToPos",     Graphics.drawLine);
-	ReductionManager.addReducer("Graphics.DrawLineToOffset",  Graphics.drawLine);
+	ReductionManager.addReducer("Graphics.DrawLinePosPos",    Graphics.drawLine, "Graphics.drawLine");
+	ReductionManager.addReducer("Graphics.DrawLinePosOffset", Graphics.drawLine, "Graphics.drawLine");
+	ReductionManager.addReducer("Graphics.DrawLineToPos",     Graphics.drawLine, "Graphics.drawLine");
+	ReductionManager.addReducer("Graphics.DrawLineToOffset",  Graphics.drawLine, "Graphics.drawLine");
 	
-	ReductionManager.addReducer("Graphics.DrawRectanglePosPos",  Graphics.drawFillRectangle);
-	ReductionManager.addReducer("Graphics.DrawRectanglePosSize", Graphics.drawFillRectangle);
-	ReductionManager.addReducer("Graphics.FillRectanglePosPos",  Graphics.drawFillRectangle);
-	ReductionManager.addReducer("Graphics.FillRectanglePosSize", Graphics.drawFillRectangle);
+	ReductionManager.addReducer("Graphics.DrawRectanglePosPos",  Graphics.drawFillRectangle, "Graphics.drawFillRectangle");
+	ReductionManager.addReducer("Graphics.DrawRectanglePosSize", Graphics.drawFillRectangle, "Graphics.drawFillRectangle");
+	ReductionManager.addReducer("Graphics.FillRectanglePosPos",  Graphics.drawFillRectangle, "Graphics.drawFillRectangle");
+	ReductionManager.addReducer("Graphics.FillRectanglePosSize", Graphics.drawFillRectangle, "Graphics.drawFillRectangle");
 	
-	ReductionManager.addReducer("Graphics.DrawEllipsePosPos",       Graphics.drawFillEllipseArc);
-	ReductionManager.addReducer("Graphics.DrawEllipsePosSize",      Graphics.drawFillEllipseArc);
-	ReductionManager.addReducer("Graphics.DrawEllipseCenterRadius", Graphics.drawFillEllipseArc);
-	ReductionManager.addReducer("Graphics.FillEllipsePosPos",       Graphics.drawFillEllipseArc);
-	ReductionManager.addReducer("Graphics.FillEllipsePosSize",      Graphics.drawFillEllipseArc);
-	ReductionManager.addReducer("Graphics.FillEllipseCenterRadius", Graphics.drawFillEllipseArc);
-	ReductionManager.addReducer("Graphics.DrawArcPosPos",           Graphics.drawFillEllipseArc);
-	ReductionManager.addReducer("Graphics.DrawArcPosSize",          Graphics.drawFillEllipseArc);
-	ReductionManager.addReducer("Graphics.DrawArcCenterRadius",     Graphics.drawFillEllipseArc);
-	ReductionManager.addReducer("Graphics.FillArcPosPos",           Graphics.drawFillEllipseArc);
-	ReductionManager.addReducer("Graphics.FillArcPosSize",          Graphics.drawFillEllipseArc);
-	ReductionManager.addReducer("Graphics.FillArcCenterRadius",     Graphics.drawFillEllipseArc);
+	ReductionManager.addReducer("Graphics.DrawEllipsePosPos",       Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
+	ReductionManager.addReducer("Graphics.DrawEllipsePosSize",      Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
+	ReductionManager.addReducer("Graphics.DrawEllipseCenterRadius", Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
+	ReductionManager.addReducer("Graphics.FillEllipsePosPos",       Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
+	ReductionManager.addReducer("Graphics.FillEllipsePosSize",      Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
+	ReductionManager.addReducer("Graphics.FillEllipseCenterRadius", Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
+	ReductionManager.addReducer("Graphics.DrawArcPosPos",           Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
+	ReductionManager.addReducer("Graphics.DrawArcPosSize",          Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
+	ReductionManager.addReducer("Graphics.DrawArcCenterRadius",     Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
+	ReductionManager.addReducer("Graphics.FillArcPosPos",           Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
+	ReductionManager.addReducer("Graphics.FillArcPosSize",          Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
+	ReductionManager.addReducer("Graphics.FillArcCenterRadius",     Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
 	
-	ReductionManager.addReducer("Graphics.SetColor", Graphics.setColor);
+	ReductionManager.addReducer("Graphics.SetColor", Graphics.setColor, "Graphics.setColor");
 	
-	ReductionManager.addReducer("Graphics.SetStrokeWidth",           Graphics.setState);
-	ReductionManager.addReducer("Graphics.SetDrawingArcOpen",        Graphics.setState);
-	ReductionManager.addReducer("Graphics.SetDrawingArcAsPie",       Graphics.setState);
-	ReductionManager.addReducer("Graphics.SetPaintMode",             Graphics.setState);
-	ReductionManager.addReducer("Graphics.SetXORMode",               Graphics.setState);
-	ReductionManager.addReducer("Graphics.SetStrokeAffectedByScale", Graphics.setState);
+	ReductionManager.addReducer("Graphics.SetStrokeWidth",           Graphics.setState, "Graphics.setState");
+	ReductionManager.addReducer("Graphics.SetDrawingArcOpen",        Graphics.setState, "Graphics.setState");
+	ReductionManager.addReducer("Graphics.SetDrawingArcAsPie",       Graphics.setState, "Graphics.setState");
+	ReductionManager.addReducer("Graphics.SetPaintMode",             Graphics.setState, "Graphics.setState");
+	ReductionManager.addReducer("Graphics.SetXORMode",               Graphics.setState, "Graphics.setState");
+	ReductionManager.addReducer("Graphics.SetStrokeAffectedByScale", Graphics.setState, "Graphics.setState");
 	
-	ReductionManager.addReducer("Graphics.ResetCoordinates",   Graphics.transformation);
-	ReductionManager.addReducer("Graphics.AddTranslation",     Graphics.transformation);
-	ReductionManager.addReducer("Graphics.AddScaling",         Graphics.transformation);
-	ReductionManager.addReducer("Graphics.AddRotation",        Graphics.transformation);
-	ReductionManager.addReducer("Graphics.SetCoordinatesMath", Graphics.transformation);
+	ReductionManager.addReducer("Graphics.ResetCoordinates",   Graphics.transformation, "Graphics.transformation");
+	ReductionManager.addReducer("Graphics.AddTranslation",     Graphics.transformation, "Graphics.transformation");
+	ReductionManager.addReducer("Graphics.AddScaling",         Graphics.transformation, "Graphics.transformation");
+	ReductionManager.addReducer("Graphics.AddRotation",        Graphics.transformation, "Graphics.transformation");
+	ReductionManager.addReducer("Graphics.SetCoordinatesMath", Graphics.transformation, "Graphics.transformation");
 	
-	ReductionManager.addReducer("Graphics.GetPos",                Graphics.getPosAngle);
-	ReductionManager.addReducer("Graphics.SetPos",                Graphics.setOffsetPosAngle);
-	ReductionManager.addReducer("Graphics.OffsetPos",             Graphics.setOffsetPosAngle);
-	ReductionManager.addReducer("Graphics.Turtle.GetAngle",       Graphics.getPosAngle);
-	ReductionManager.addReducer("Graphics.Turtle.SetAngle",       Graphics.setOffsetPosAngle);
-	ReductionManager.addReducer("Graphics.Turtle.Turn",           Graphics.setOffsetPosAngle);
-	ReductionManager.addReducer("Graphics.Turtle.Forward",        Graphics.forward);
-	ReductionManager.addReducer("Graphics.Turtle.ForwardDrawing", Graphics.forward);
+	ReductionManager.addReducer("Graphics.GetPos",                Graphics.getPosAngle,       "Graphics.getPosAngle");
+	ReductionManager.addReducer("Graphics.SetPos",                Graphics.setOffsetPosAngle, "Graphics.setOffsetPosAngle");
+	ReductionManager.addReducer("Graphics.OffsetPos",             Graphics.setOffsetPosAngle, "Graphics.setOffsetPosAngle");
+	ReductionManager.addReducer("Graphics.Turtle.GetAngle",       Graphics.getPosAngle,       "Graphics.getPosAngle");
+	ReductionManager.addReducer("Graphics.Turtle.SetAngle",       Graphics.setOffsetPosAngle, "Graphics.setOffsetPosAngle");
+	ReductionManager.addReducer("Graphics.Turtle.Turn",           Graphics.setOffsetPosAngle, "Graphics.setOffsetPosAngle");
+	ReductionManager.addReducer("Graphics.Turtle.Forward",        Graphics.forward,           "Graphics.forward");
+	ReductionManager.addReducer("Graphics.Turtle.ForwardDrawing", Graphics.forward,           "Graphics.forward");
 	
-	ReductionManager.addReducer("Graphics.DrawImage", Graphics.drawImage);
+	ReductionManager.addReducer("Graphics.DrawImage", Graphics.drawImage, "Graphics.drawImage");
 	
-	ReductionManager.addReducer("Graphics.GetTextWidth", Graphics.getTextWidth);
-	ReductionManager.addReducer("Graphics.DrawText",     Graphics.drawText);
+	ReductionManager.addReducer("Graphics.GetTextWidth", Graphics.getTextWidth, "Graphics.getTextWidth");
+	ReductionManager.addReducer("Graphics.DrawText",     Graphics.drawText,     "Graphics.drawText");
 };
