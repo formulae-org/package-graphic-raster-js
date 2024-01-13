@@ -69,3 +69,7 @@ Take a look at this [tutorial](https://formulae.org/?script=tutorials/Complex) t
     * Set drawing arc
        * Open
        * Closed (as pie)
+
+### Gallery
+
+Visit [this Pinterest galley](https://www.pinterest.com/formulae_org/_created/) of images created with Fōrmulæ, using the raster graphics package.
