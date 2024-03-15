@@ -80,11 +80,10 @@ Graphics.copyRasterGraphics = async (copyRasterGraphics, session) => {
 	
 	switch (source.getTag()) {
 		case "Graphics.RasterGraphics":
-		case "Graphics.Painter":
 			break;
 		
 		default: {
-			ReductionManager.setInError(source, "Expression must be a raster graphics or a painter");
+			ReductionManager.setInError(source, "Expression must be a raster graphics");
 			throw new ReductionError();
 		}
 	}
@@ -108,35 +107,32 @@ Graphics.getSize = async (getSize, session) => {
 	
 	switch (source.getTag()) {
 		case "Graphics.RasterGraphics":
-		case "Graphics.Painter":
 			break;
 		
 		default: {
-			ReductionManager.setInError(source, "Expression must be a raster graphics or a painter");
+			ReductionManager.setInError(source, "Expression must be a raster graphics");
 			throw new ReductionError();
 		}
 	}
 	
-	let canvas = source.get("Value").canvas;;
+	let canvas = source.get("Value").canvas;
 	let result = Formulae.createExpression("List.List");
-	result.addChild(CanonicalArithmetic.number2Expr(canvas.width));
-	result.addChild(CanonicalArithmetic.number2Expr(canvas.height));
+	result.addChild(
+		CanonicalArithmetic.canonical2InternalNumber(
+			new CanonicalArithmetic.Integer(
+				BigInt(canvas.width)
+			)
+		)
+	);
+	result.addChild(
+		CanonicalArithmetic.canonical2InternalNumber(
+			new CanonicalArithmetic.Integer(
+				BigInt(canvas.height)
+			)
+		)
+	);
 	
 	getSize.replaceBy(result);
-	return true;
-};
-
-Graphics.getPainter = async (getPainter, session) => {
-	let graphicsExpression = getPainter.children[0];
-	if (graphicsExpression.getTag() == "Graphics.RasterGraphics") {
-		ReductionManager.setInError(graphicsExpression, "Expression is not a raster graphics");
-		throw new ReductionError();
-	}
-	
-	let result = Formulae.createExpression("Graphics.Painter");
-	result.set("Value", graphicsExpression.get("Value"));
-	
-	getPainter.replaceBy(result);
 	return true;
 };
 
@@ -145,11 +141,10 @@ Graphics.getPixel = async (getPixel, session) => {
 	
 	switch (source.getTag()) {
 		case "Graphics.RasterGraphics":
-		case "Graphics.Painter":
 			break;
 		
 		default: {
-			ReductionManager.setInError(source, "Expression must be a raster graphics or a painter");
+			ReductionManager.setInError(source, "Expression must be a raster graphics");
 			throw new ReductionError();
 		}
 	}
@@ -203,11 +198,10 @@ Graphics.setPixel = async (setPixel, session) => {
 	
 	switch (source.getTag()) {
 		case "Graphics.RasterGraphics":
-		case "Graphics.Painter":
 			break;
 		
 		default: {
-			ReductionManager.setInError(source, "Expression must be a raster graphics or a painter");
+			ReductionManager.setInError(source, "Expression must be a raster graphics");
 			throw new ReductionError();
 		}
 	}
@@ -273,11 +267,10 @@ Graphics.drawLine = async (drawLine, session) => {
 	
 	switch (source.getTag()) {
 		case "Graphics.RasterGraphics":
-		case "Graphics.Painter":
 			break;
 		
 		default: {
-			ReductionManager.setInError(source, "Expression must be a raster graphics or a painter");
+			ReductionManager.setInError(source, "Expression must be a raster graphics");
 			throw new ReductionError();
 		}
 	}
@@ -396,11 +389,10 @@ Graphics.drawFillRectangle = async (drawFillRectangle, session) => {
 	
 	switch (source.getTag()) {
 		case "Graphics.RasterGraphics":
-		case "Graphics.Painter":
 			break;
 		
 		default: {
-			ReductionManager.setInError(source, "Expression must be a raster graphics or a painter");
+			ReductionManager.setInError(source, "Expression must be a raster graphics");
 			throw new ReductionError();
 		}
 	}
@@ -515,11 +507,10 @@ Graphics.drawFillEllipseArc = async (drawFillEllipseArc, session) => {
 	
 	switch (source.getTag()) {
 		case "Graphics.RasterGraphics":
-		case "Graphics.Painter":
 			break;
 		
 		default: {
-			ReductionManager.setInError(source, "Expression must be a raster graphics or a painter");
+			ReductionManager.setInError(source, "Expression must be a raster graphics");
 			throw new ReductionError();
 		}
 	}
@@ -874,11 +865,10 @@ Graphics.setColor = async (setColor, session) => {
 	
 	switch (source.getTag()) {
 		case "Graphics.RasterGraphics":
-		case "Graphics.Painter":
 			break;
 		
 		default: {
-			ReductionManager.setInError(source, "Expression must be a raster graphics or a painter");
+			ReductionManager.setInError(source, "Expression must be a raster graphics");
 			throw new ReductionError();
 		}
 	}
@@ -905,11 +895,10 @@ Graphics.setState = async (setState, session) => {
 	
 	switch (source.getTag()) {
 		case "Graphics.RasterGraphics":
-		case "Graphics.Painter":
 			break;
 		
 		default: {
-			ReductionManager.setInError(source, "Expression must be a raster graphics or a painter");
+			ReductionManager.setInError(source, "Expression must be a raster graphics");
 			throw new ReductionError();
 		}
 	}
@@ -1016,11 +1005,10 @@ Graphics.transformation = async (transformation, session) => {
 	
 	switch (source.getTag()) {
 		case "Graphics.RasterGraphics":
-		case "Graphics.Painter":
 			break;
 		
 		default: {
-			ReductionManager.setInError(source, "Expression must be a raster graphics or a painter");
+			ReductionManager.setInError(source, "Expression must be a raster graphics");
 			throw new ReductionError();
 		}
 	}
@@ -1115,11 +1103,10 @@ Graphics.getPosAngle = async (getPosAngle, session) => {
 	
 	switch (source.getTag()) {
 		case "Graphics.RasterGraphics":
-		case "Graphics.Painter":
 			break;
 		
 		default: {
-			ReductionManager.setInError(source, "Expression must be a raster graphics or a painter");
+			ReductionManager.setInError(source, "Expression must be a raster graphics");
 			throw new ReductionError();
 		}
 	}
@@ -1129,12 +1116,28 @@ Graphics.getPosAngle = async (getPosAngle, session) => {
 	switch (getPosAngle.getTag()) {
 		case "Graphics.GetPos":
 			result = Formulae.createExpression("List.List");
-			result.addChild(CanonicalArithmetic.number2Expr(source.get("X")));
-			result.addChild(CanonicalArithmetic.number2Expr(source.get("Y")));
+			result.addChild(
+				CanonicalArithmetic.number2InternalNumber(
+					source.get("X"),
+					false, // type depends whether number is integer or not
+					session
+				)
+			);
+			result.addChild(
+				CanonicalArithmetic.number2InternalNumber(
+					source.get("Y"),
+					false, // type depends whether number is integer or not
+					session
+				)
+			);
 			break;
 			
 		case "Graphics.Turtle.GetAngle":
-			result = CanonicalArithmetic.number2Expr(source.get("Angle"));
+			result = CanonicalArithmetic.number2InternalNumber(
+				source.get("Angle"),
+				false, // type depends whether number is integer or not
+				session
+			);
 			break;
 	}
 	
@@ -1147,11 +1150,10 @@ Graphics.setOffsetPosAngle = async (setOffsetPosAngle, session) => {
 	
 	switch (source.getTag()) {
 		case "Graphics.RasterGraphics":
-		case "Graphics.Painter":
 			break;
 		
 		default: {
-			ReductionManager.setInError(source, "Expression must be a raster graphics or a painter");
+			ReductionManager.setInError(source, "Expression must be a raster graphics");
 			throw new ReductionError();
 		}
 	}
@@ -1194,11 +1196,10 @@ Graphics.forward = async (forward, session) => {
 	
 	switch (source.getTag()) {
 		case "Graphics.RasterGraphics":
-		case "Graphics.Painter":
 			break;
 		
 		default: {
-			ReductionManager.setInError(source, "Expression must be a raster graphics or a painter");
+			ReductionManager.setInError(source, "Expression must be a raster graphics");
 			throw new ReductionError();
 		}
 	}
@@ -1240,11 +1241,10 @@ Graphics.drawImage = async (drawImage, session) => {
 	
 	switch (source.getTag()) {
 		case "Graphics.RasterGraphics":
-		case "Graphics.Painter":
 			break;
 		
 		default: {
-			ReductionManager.setInError(source, "Expression must be a raster graphics or a painter");
+			ReductionManager.setInError(source, "Expression must be a raster graphics");
 			throw new ReductionError();
 		}
 	}
@@ -1279,11 +1279,10 @@ Graphics.getTextWidth = async (getTextWidth, session) => {
 	
 	switch (source.getTag()) {
 		case "Graphics.RasterGraphics":
-		case "Graphics.Painter":
 			break;
 		
 		default: {
-			ReductionManager.setInError(source, "Expression must be a raster graphics or a painter");
+			ReductionManager.setInError(source, "Expression must be a raster graphics");
 			throw new ReductionError();
 		}
 	}
@@ -1294,8 +1293,13 @@ Graphics.getTextWidth = async (getTextWidth, session) => {
 		throw new ReductionError();
 	}
 	
-	let result = CanonicalArithmetic.number2Expr(source.get("Value").measureText(stringExpression.get("Value")).width);
-	getTextWidth.replaceBy(result);
+	getTextWidth.replaceBy(
+		CanonicalArithmetic.number2InternalNumber(
+			source.get("Value").measureText(stringExpression.get("Value")).width,
+			false, // type depends whether number is integer or not
+			session
+		)
+	);
 	return true;
 };
 	
@@ -1304,11 +1308,10 @@ Graphics.drawText = async (drawText, session) => {
 	
 	switch (source.getTag()) {
 		case "Graphics.RasterGraphics":
-		case "Graphics.Painter":
 			break;
 		
 		default: {
-			ReductionManager.setInError(source, "Expression must be a raster graphics or a painter");
+			ReductionManager.setInError(source, "Expression must be a raster graphics");
 			throw new ReductionError();
 		}
 	}
