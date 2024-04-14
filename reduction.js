@@ -1161,8 +1161,19 @@ Graphics.setOffsetPosAngle = async (setOffsetPosAngle, session) => {
 	try {
 		switch (setOffsetPosAngle.getTag()) {
 			case "Graphics.SetPos":
-				source.set("X", setOffsetPosAngle.children[1].evaluate());
-				source.set("Y", setOffsetPosAngle.children[2].evaluate());
+				if (setOffsetPosAngle.children.length == 2) {
+					if (setOffsetPosAngle.children[1].getTag() !== "List.List") {
+						ReductionManager.setInError(setOffsetPosAngle.children[1], "Expression must be a list");
+						throw new ReductionError();
+					}
+					
+					source.set("X", setOffsetPosAngle.children[1].children[0].evaluate());
+					source.set("Y", setOffsetPosAngle.children[1].children[1].evaluate());
+				}
+				else { // 3
+					source.set("X", setOffsetPosAngle.children[1].evaluate());
+					source.set("Y", setOffsetPosAngle.children[2].evaluate());
+				}
 				break;
 			
 			case "Graphics.OffsetPos":

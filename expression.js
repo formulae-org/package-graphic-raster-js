@@ -178,7 +178,7 @@ Graphics.setExpressions = function(module) {
 		[ "DrawLinePosOffset",        5, 5 ],
 		[ "DrawLineToPos",            3, 3 ],
 		[ "DrawLineToOffset",         3, 3 ],
-		[ "SetPos",                   3, 3 ],
+		[ "SetPos",                   2, 3 ],
 		[ "OffsetPos",                3, 3 ],
 		[ "SetAntialias",             2, 2 ],
 		[ "SetStrokeAffectedByScale", 2, 2 ],
