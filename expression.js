@@ -137,20 +137,78 @@ Graphics.RasterGraphics = class extends Expression.NullaryExpression {
 	}
 }
 
+Graphics.Path = class extends Expression.Literal {
+	getTag()     { return "Graphics.Path"; }
+	getLiteral() { return Graphics.messages.literalPath; }
+	getName()    { return Graphics.messages.namePath; }
+	
+	constructor() {
+		super();
+		this.path = new Path2D();
+		this.settings = [ 0, 0, 0 ];
+	}
+	
+	set(name, value) {
+		switch (name) {
+			case "Value":
+				this.path = value; return;
+				
+			case "X":
+				this.settings[0] = value; return;
+				
+			case "Y":
+				this.settings[1] = value; return;
+			
+			case "Angle":
+				this.settings[2] = value; return;
+		}
+		
+		super.set(name, value);
+	}
+	
+	get(name) {
+		switch (name) {
+			case "Value":
+				return this.path;
+				
+			case "X":
+				return this.settings[0];
+				
+			case "Y":
+				return this.settings[1];
+			
+			case "Angle":
+				return this.settings[2];
+		}
+		
+		return super.get(name);
+	}
+}
+
 Graphics.setExpressions = function(module) {
 	Formulae.setExpression(module, "Graphics.RasterGraphics", Graphics.RasterGraphics);
+	Formulae.setExpression(module, "Graphics.Path",           Graphics.Path);
 	
-	// graphic painter
-	Formulae.setExpression(module, "Graphics.Painter", {
+	/*
+	Formulae.setExpression(module, "Graphics.Path", {
 		clazz:      Expression.Literal,
-		getTag:     () => "Graphics.Painter",
-		getLiteral: () => Graphics.messages.literalPainter,
-		getName:    () => Graphics.messages.namePainter
-	});
+		getTag:     () => "Graphics.Path",
+		getLiteral: () => Graphics.messages.literalPath,
+		getName:    () => Graphics.messages.namePath
+	})
+	*/;
+	
+	// 0-parameter function
+	[ "CreatePath"  ].forEach(tag => Formulae.setExpression(module, "Graphics." + tag, {
+		clazz:       Expression.Function,
+		getTag:      () => "Graphics." + tag,
+		getMnemonic: () => Graphics.messages["mnemonic" + tag],
+		getName:     () => Graphics.messages["name" + tag],
+		min: 0, max: 0
+	}));
 	
 	[ // 1-parameter functions
 		[ "Graphics",        "GetSize"                    ],
-		[ "Graphics",        "GetPainter"                 ],
 		[ "Graphics",        "CopyRasterGraphics"         ],
 		[ "Graphics",        "GetColor"                   ],
 		[ "Graphics",        "GetPos"                     ],
@@ -161,7 +219,7 @@ Graphics.setExpressions = function(module) {
 		[ "Graphics",        "SetPaintMode"               ],
 		[ "Graphics",        "SetXORMode"                 ],
 		[ "Graphics",        "SetDrawingArcOpen"          ],
-		[ "Graphics",        "SetDrawingArcAsPie"         ],
+		[ "Graphics",        "SetDrawingArcAsPie"         ]
 	].forEach(row => Formulae.setExpression(module, row[0] + "." + row[1], {
 		clazz:        Expression.Function,
 		getTag:       () => row[0] + "." + row[1],
@@ -174,10 +232,17 @@ Graphics.setExpressions = function(module) {
 		[ "CreateRasterGraphics",     2, 3 ],
 		[ "GetPixel",                 3, 3 ],
 		[ "SetPixel",                 3, 4 ],
+		[ "DrawPath",                 2, 2 ],
+		[ "FillPath",                 2, 2 ],
 		[ "DrawLinePosPos",           5, 5 ],
 		[ "DrawLinePosOffset",        5, 5 ],
 		[ "DrawLineToPos",            3, 3 ],
 		[ "DrawLineToOffset",         3, 3 ],
+		[ "PathLinePosPos",           5, 5 ],
+		[ "PathLinePosOffset",        5, 5 ],
+		[ "PathLineToPos",            3, 3 ],
+		[ "PathLineToOffset",         3, 3 ],
+		[ "PathLineToOffset",         3, 3 ],
 		[ "SetPos",                   2, 3 ],
 		[ "OffsetPos",                3, 3 ],
 		[ "SetAntialias",             2, 2 ],
@@ -197,8 +262,8 @@ Graphics.setExpressions = function(module) {
 		max:          row[2]
 	}));
 	
-	// draw/fill rectangle pos-pos
-	[ "DrawRectanglePosPos", "FillRectanglePosPos" ].forEach(tag => Formulae.setExpression(module, "Graphics." + tag, {
+	// draw/fill/path rectangle pos-pos
+	[ "DrawRectanglePosPos", "FillRectanglePosPos", "PathRectanglePosPos" ].forEach(tag => Formulae.setExpression(module, "Graphics." + tag, {
 		clazz:        Expression.Function,
 		getTag:       () => "Graphics." + tag,
 		getMnemonic:  () => Graphics.messages["mnemonic" + tag],
@@ -207,8 +272,8 @@ Graphics.setExpressions = function(module) {
 		min: 5, max: 5
 	}));
 	
-	// draw/fill rectangle pos-size
-	[ "DrawRectanglePosSize", "FillRectanglePosSize" ].forEach(tag => Formulae.setExpression(module, "Graphics." + tag, {
+	// draw/fill/path rectangle pos-size
+	[ "DrawRectanglePosSize", "FillRectanglePosSize", "PathRectanglePosSize" ].forEach(tag => Formulae.setExpression(module, "Graphics." + tag, {
 		clazz:        Expression.Function,
 		getTag:       () => "Graphics." + tag,
 		getMnemonic:  () => Graphics.messages["mnemonic" + tag],
@@ -217,8 +282,8 @@ Graphics.setExpressions = function(module) {
 		min: 5, max: 5
 	}));
 	
-	// draw/fill ellipse pos-pos
-	[ "DrawEllipsePosPos", "FillEllipsePosPos"].forEach(tag => Formulae.setExpression(module, "Graphics." + tag, {
+	// draw/fill/path ellipse pos-pos
+	[ "DrawEllipsePosPos", "FillEllipsePosPos", "PathEllipsePosPos" ].forEach(tag => Formulae.setExpression(module, "Graphics." + tag, {
 		clazz:        Expression.Function,
 		getTag:       () => "Graphics." + tag,
 		getMnemonic:  () => Graphics.messages["mnemonic" + tag],
@@ -227,8 +292,8 @@ Graphics.setExpressions = function(module) {
 		min: 5, max: 5
 	}));
 	
-	// draw/fill ellipse pos-size
-	[ "DrawEllipsePosSize", "FillEllipsePosSize"].forEach(tag => Formulae.setExpression(module, "Graphics." + tag, {
+	// draw/fill/path ellipse pos-size
+	[ "DrawEllipsePosSize", "FillEllipsePosSize", "PathEllipsePosSize" ].forEach(tag => Formulae.setExpression(module, "Graphics." + tag, {
 		clazz:        Expression.Function,
 		getTag:       () => "Graphics." + tag,
 		getMnemonic:  () => Graphics.messages["mnemonic" + tag],
@@ -237,8 +302,8 @@ Graphics.setExpressions = function(module) {
 		min: 5, max: 5
 	}));
 	
-	// draw/fill ellipse center-radius
-	[ "DrawEllipseCenterRadius", "FillEllipseCenterRadius"].forEach(tag => Formulae.setExpression(module, "Graphics." + tag, {
+	// draw/fill/path ellipse center-radius
+	[ "DrawEllipseCenterRadius", "FillEllipseCenterRadius", "PathEllipseCenterRadius" ].forEach(tag => Formulae.setExpression(module, "Graphics." + tag, {
 		clazz:        Expression.Function,
 		getTag:       () => "Graphics." + tag,
 		getMnemonic:  () => Graphics.messages["mnemonic" + tag],
@@ -247,8 +312,8 @@ Graphics.setExpressions = function(module) {
 		min: 4, max: 4
 	}));
 	
-	// draw/fill arc pos-pos
-	[ "DrawArcPosPos", "FillArcPosPos"].forEach(tag => Formulae.setExpression(module, "Graphics." + tag, {
+	// draw/fill/path arc pos-pos
+	[ "DrawArcPosPos", "FillArcPosPos", "PathArcPosPos" ].forEach(tag => Formulae.setExpression(module, "Graphics." + tag, {
 		clazz:        Expression.Function,
 		getTag:       () => "Graphics." + tag,
 		getMnemonic:  () => Graphics.messages["mnemonic" + tag],
@@ -257,8 +322,8 @@ Graphics.setExpressions = function(module) {
 		min: 7, max: 7
 	}));
 	
-	// draw/fill arc pos-size
-	[ "DrawArcPosSize", "FillArcPosSize"].forEach(tag => Formulae.setExpression(module, "Graphics." + tag, {
+	// draw/fill/path arc pos-size
+	[ "DrawArcPosSize", "FillArcPosSize", "PathArcPosSize" ].forEach(tag => Formulae.setExpression(module, "Graphics." + tag, {
 		clazz:        Expression.Function,
 		getTag:       () => "Graphics." + tag,
 		getMnemonic:  () => Graphics.messages["mnemonic" + tag],
@@ -267,8 +332,8 @@ Graphics.setExpressions = function(module) {
 		min: 7, max: 7
 	}));
 	
-	// draw/fill arc center-radius
-	[ "DrawArcCenterRadius", "FillArcCenterRadius"].forEach(tag => Formulae.setExpression(module, "Graphics." + tag, {
+	// draw/fill/path arc center-radius
+	[ "DrawArcCenterRadius", "FillArcCenterRadius", "PathArcCenterRadius" ].forEach(tag => Formulae.setExpression(module, "Graphics." + tag, {
 		clazz:        Expression.Function,
 		getTag:       () => "Graphics." + tag,
 		getMnemonic:  () => Graphics.messages["mnemonic" + tag],

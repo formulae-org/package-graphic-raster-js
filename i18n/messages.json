@@ -20,14 +20,6 @@
 	"childGetSize"    : "The painter",
 	"leafGetSize"     : "Get size of raster",
 
-	"namePainter"    : "A raster graphics painter",
-	"literalPainter" : "<painter>",
-
-	"nameGetPainter"     : "Get the painter of a raster graphics",
-	"mnemonicGetPainter" : "GetPainter",
-	"childGetPainter"    : "The raster graphics",
-	"leafGetPainter"     : "Get painter",
-
 	"pathPixels" : "Graphics.Pixel operations",
 
 	"nameGetPixel"     : "Get the pixel of a raster graphics",
@@ -40,6 +32,25 @@
 	"childrenSetPixel" : [ "The painter", "x coordinate", "y coordinate", "Color" ],
 	"leafSetPixel"     : "Set pixel",
 
+	"pathPath" : "Graphics.Path",
+
+	"namePath"    : "A graphics path",
+	"literalPath" : "<path>",
+	
+	"nameCreatePath"     : "Create path",
+	"mnemonicCreatePath" : "CreatePath",
+	"leafCreatePath"     : "Create path",
+	
+	"nameDrawPath"     : "Draw path",
+	"mnemonicDrawPath" : "DrawPath",
+	"childrenDrawPath" : [ "Graphic context", "Path" ],
+	"leafDrawPath"     : "Draw path",
+	
+	"nameFillPath"     : "Fill path",
+	"mnemonicFillPath" : "FillPath",
+	"childrenFillPath" : [ "Graphic context", "Path" ],
+	"leafFillPath"     : "Fill path",
+	
 	"pathLines" : "Graphics.Line",
 
 	"nameDrawLinePosPos"     : "Draw a line from position to position",
@@ -61,6 +72,26 @@
 	"mnemonicDrawLineToOffset" : "DrawLineToOffset",
 	"childrenDrawLineToOffset" : [ "The painter", "Offset x", "Offset y" ],
 	"leafDrawLineToOffset"     : "Draw a line from last position to offset",
+
+	"namePathLinePosPos"     : "Path a line from position to position",
+	"mnemonicPathLinePosPos" : "PathLinePosPos",
+	"childrenPathLinePosPos" : [ "The painter", "Starting x", "Starting y", "Ending x", "Ending y" ],
+	"leafPathLinePosPos"     : "Path a line from position to position",
+
+	"namePathLinePosOffset"     : "Path a line from position to offset",
+	"mnemonicPathLinePosOffset" : "PathLinePosOffset",
+	"childrenPathLinePosOffset" : [ "The painter", "Starting x", "Starting y", "Offset x", "Offset y" ],
+	"leafPathLinePosOffset"     : "Path a line from position to offset",
+
+	"namePathLineToPos"     : "Path a line from last position to position",
+	"mnemonicPathLineToPos" : "PathLineToPos",
+	"childrenPathLineToPos" : [ "The painter", "Position x", "Position y" ],
+	"leafPathLineToPos"     : "Path a line from last position to position",
+
+	"namePathLineToOffset"     : "Path a line from last position to offset",
+	"mnemonicPathLineToOffset" : "PathLineToOffset",
+	"childrenPathLineToOffset" : [ "The painter", "Offset x", "Offset y" ],
+	"leafPathLineToOffset"     : "Path a line from last position to offset",
 
 	"nameGetPos"     : "Get current position",
 	"mnemonicGetPos" : "GetPos",
@@ -107,6 +138,14 @@
 	"mnemonicFillRectanglePosSize" : "FillRectanglePosSize",
 	"leafFillRectanglePosSize"     : "Fill solid rectangle from corner to size",
 
+	"namePathRectanglePosPos"     : "Path solid rectangle from corner to corner",
+	"mnemonicPathRectanglePosPos" : "PathRectanglePosPos",
+	"leafPathRectanglePosPos"     : "Path solid rectangle from corner to corner",
+
+	"namePathRectanglePosSize"     : "Path solid rectangle from corner to size",
+	"mnemonicPathRectanglePosSize" : "PathRectanglePosSize",
+	"leafPathRectanglePosSize"     : "Path solid rectangle from corner to size",
+
 	"pathEllipse" : "Graphics.Circle/Ellipse",
 
 	"nameDrawEllipsePosPos"     : "Draw ellipse from corner to corner",
@@ -136,6 +175,18 @@
 	"mnemonicFillEllipseCenterRadius" : "FillEllipseCenterRadius",
 	"leafFillEllipseCenterRadius"     : "Fill ellipse given center and radius",
 
+	"namePathEllipsePosPos"     : "Path ellipse from corner to corner",
+	"mnemonicPathEllipsePosPos" : "PathEllipsePosPos",
+	"leafPathEllipsePosPos"     : "Path ellipse from corner to corner",
+
+	"namePathEllipsePosSize"     : "Path ellipse from corner to size",
+	"mnemonicPathEllipsePosSize" : "PathEllipsePosSize",
+	"leafPathEllipsePosSize"     : "Path ellipse from corner to size",
+
+	"namePathEllipseCenterRadius"     : "Path ellipse given center and radius",
+	"mnemonicPathEllipseCenterRadius" : "PathEllipseCenterRadius",
+	"leafPathEllipseCenterRadius"     : "Path ellipse given center and radius",
+
 	"pathArc" : "Graphics.Arc",
 
 	"nameDrawArcPosPos"     : "Draw arc from corner to corner",
@@ -164,6 +215,18 @@
 	"nameFillArcCenterRadius"     : "Fill arc given center and radius",
 	"mnemonicFillArcCenterRadius" : "FillArcCenterRadius",
 	"leafFillArcCenterRadius"     : "Fill arc given center and radius",
+
+	"namePathArcPosPos"     : "Path arc from corner to corner",
+	"mnemonicPathArcPosPos" : "PathArcPosPos",
+	"leafPathArcPosPos"     : "Path arc from corner to corner",
+
+	"namePathArcPosSize"     : "Path arc from corner to size",
+	"mnemonicPathArcPosSize" : "PathArcPosSize",
+	"leafPathArcPosSize"     : "Path arc from corner to size",
+
+	"namePathArcCenterRadius"     : "Path arc given center and radius",
+	"mnemonicPathArcCenterRadius" : "PathArcCenterRadius",
+	"leafPathArcCenterRadius"     : "Path arc given center and radius",
 
 	"pathImage" : "Graphics.Image",
 
@@ -285,4 +348,3 @@
 	"childSetDrawingArcAsPie"    : "A painter",
 	"leafSetDrawingArcAsPie"     : "Set drawing arc as pie"
 }
-

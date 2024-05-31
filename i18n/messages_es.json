@@ -20,14 +20,6 @@
 	"childGetSize"    : "Imágen",
 	"leafGetSize"     : "Tamaño de imagen",
 
-	"namePainter"    : "Pintor de imágen",
-	"literalPainter" : "<pintor>",
-
-	"nameGetPainter"     : "Obtención de pintor de imágen",
-	"mnemonicGetPainter" : "ObtenerPintor",
-	"childGetPainter"    : "La imagen",
-	"leafGetPainter"     : "Obtener pintor",
-
 	"pathPixels" : "Imagen.Operaciones con pixeles",
 
 	"nameGetPixel"     : "Obtención del color de pixel en imagen",
@@ -40,6 +32,25 @@
 	"childrenSetPixel" : [ "El pintor", "coordenada x", "coordenada y", "Color" ],
 	"leafSetPixel"     : "Fijar pixel",
 
+	"pathPath" : "Imagen.Camino",
+
+	"namePath"    : "Camino gráfico",
+	"literalPath" : "<camino>",
+	
+	"nameCreatePath"     : "Crear camino",
+	"mnemonicCreatePath" : "CrearCamino",
+	"leafCreatePath"     : "Crear camino",
+	
+	"nameDrawPath"     : "Dibujar camino",
+	"mnemonicDrawPath" : "DibujarCamino",
+	"childrenDrawPath" : [ "Contexto gráfico", "Camino" ],
+	"leafDrawPath"     : "Dibujar camino",
+	
+	"nameFillPath"     : "Rellenar camino",
+	"mnemonicFillPath" : "RellenarCamino",
+	"childrenFillPath" : [ "Contexto gráfico", "Camino" ],
+	"leafFillPath"     : "Rellenar camino",
+	
 	"pathLines" : "Imagen.Línea",
 
 	"nameDrawLinePosPos"     : "Dibujar línea de posición a posición",
@@ -61,6 +72,26 @@
 	"mnemonicDrawLineToOffset" : "DibujarLíneaADesplazamiento",
 	"childrenDrawLineToOffset" : [ "Pintor", "Desplazamiento x", "Desplazamiento y" ],
 	"leafDrawLineToOffset"     : "Dibujar línea de última posición a desplazamiento",
+
+	"namePathLinePosPos"     : "Añadir al camino línea de posición a posición",
+	"mnemonicPathLinePosPos" : "CaminoLíneaPosPos",
+	"childrenPathLinePosPos" : [ "Contexto gráfico", "X incial", "Y inicial", "X inicial", "Y final" ],
+	"leafPathLinePosPos"     : "Añadir al camino línea de posición a posición",
+
+	"namePathLinePosOffset"     : "Añadir al camino línea de posición a desplazamiento",
+	"mnemonicPathLinePosOffset" : "CaminoLíneaPosDesplazamiento",
+	"childrenPathLinePosOffset" : [ "Conetxto gráfico", "X incial", "Y incial", "Desplazamineto x", "Desplazamiento y" ],
+	"leafPathLinePosOffset"     : "Añadir al camino línea de posición a desplazamiento",
+
+	"namePathLineToPos"     : "Añadir al camino línea de última posición a posición",
+	"mnemonicPathLineToPos" : "CaminoLíneaAPosición",
+	"childrenPathLineToPos" : [ "Contexto gráfico", "Posición x", "Posición y" ],
+	"leafPathLineToPos"     : "Añadir al camino línea de última posición a posición",
+
+	"namePathLineToOffset"     : "Añadir al camino línea de última posición a desplazamiento",
+	"mnemonicPathLineToOffset" : "CaminoLíneaPosDesplazamiento",
+	"childrenPathLineToOffset" : [ "Contexto gráfico", "Desplazamiento x", "Desplazamiento y" ],
+	"leafPathLineToOffset"     : "Añadir al camino línea de última posición a desplazamiento",
 
 	"nameGetPos"     : "Obtener de la posición actual del pintor en imagen",
 	"mnemonicGetPos" : "ObtenerPosición",
@@ -103,9 +134,17 @@
 	"mnemonicFillRectanglePosPos" : "RellenarRectánguloPosPos",
 	"leafFillRectanglePosPos"     : "Rellenar rectángulo de esquina a esquina",
 
-	"nameFillRectanglePosSize"     : "Rellenar recatángulo de esquina a tamaño",
+	"nameFillRectanglePosSize"     : "Rellenar rectángulo de esquina a tamaño",
 	"mnemonicFillRectanglePosSize" : "RellenarRectánguloPosTamaño",
 	"leafFillRectanglePosSize"     : "Rellenar rectángulo de esquina a tamaño",
+
+	"namePathRectanglePosPos"     : "Añadir a camino rectángulo de esquina a esquina",
+	"mnemonicPathRectanglePosPos" : "CaminoRectánguloPosPos",
+	"leafPathRectanglePosPos"     : "Añadir a camino rectángulo de esquina a esquina",
+
+	"namePathRectanglePosSize"     : "Añadir a camino rectángulo de esquina a tamaño",
+	"mnemonicPathRectanglePosSize" : "CaminoRectánguloPosTamaño",
+	"leafPathRectanglePosSize"     : "Añadir a camino rectángulo de esquina a tamaño",
 
 	"pathEllipse" : "Imagen.Círculo/Elipse",
 
@@ -136,6 +175,18 @@
 	"mnemonicFillEllipseCenterRadius" : "RellenarElipseCentroRadio",
 	"leafFillEllipseCenterRadius"     : "Rellenar elipse dados centro y radio",
 
+	"namePathEllipsePosPos"     : "Añadir a camino elipse de esquina a esquina",
+	"mnemonicPathEllipsePosPos" : "CaminoElipsePosPos",
+	"leafPathEllipsePosPos"     : "Añadir a camino elipse de esquina a esquina",
+
+	"namePathEllipsePosSize"     : "Añadir a camino elipse de esquina a tamaño",
+	"mnemonicPathEllipsePosSize" : "CaminoElipsePosTamaño",
+	"leafPathEllipsePosSize"     : "Añadir a camino elipse de esquina a tamaño",
+
+	"namePathEllipseCenterRadius"     : "Añadir a camino elipse dados centro y radio",
+	"mnemonicPathEllipseCenterRadius" : "CaminoElipseCentroRadio",
+	"leafPathEllipseCenterRadius"     : "Añadir a camino elipse dados centro y radio",
+
 	"pathArc" : "Imagen.Arco",
 
 	"nameDrawArcPosPos"     : "Dibujar arco de esquina a esquina",
@@ -164,6 +215,18 @@
 	"nameFillArcCenterRadius"     : "Rellenar arco dados centro y radio",
 	"mnemonicFillArcCenterRadius" : "RellenarArcoCentroRadio",
 	"leafFillArcCenterRadius"     : "Rellenar arco dados centro y radio",
+
+	"namePathArcPosPos"     : "Añadir a camino arco de esquina a esquina",
+	"mnemonicPathArcPosPos" : "CaminoArcoPosPos",
+	"leafPathArcPosPos"     : "Añadir a camino arco de esquina a esquina",
+
+	"namePathArcPosSize"     : "Añadir a camino arco de esquina a tamaño",
+	"mnemonicPathArcPosSize" : "CaminoArcoPosTamaño",
+	"leafPathArcPosSize"     : "Añadir a camino arco de esquina a tamaño",
+
+	"namePathArcCenterRadius"     : "Añadir a camino arco dados centro y radio",
+	"mnemonicPathArcCenterRadius" : "CaminoArcoCentroRadio",
+	"leafPathArcCenterRadius"     : "Añadir a camino arco dados centro y radio",
 
 	"pathImage" : "Imagen.Imagen",
 
@@ -285,4 +348,3 @@
 	"childSetDrawingArcAsPie"    : "Pintor",
 	"leafSetDrawingArcAsPie"     : "Fijar dibujo de arco como sector"
 }
-

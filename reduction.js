@@ -262,6 +262,39 @@ Graphics.setPixel = async (setPixel, session) => {
 	return true;
 };
 
+Graphics.createPath = async (createPath, session) => {
+	let result = Formulae.createExpression("Graphics.Path");
+	createPath.replaceBy(result);
+	return true;
+};
+
+Graphics.drawFillPath = async (drawFillPath, session) => {
+	let source = drawFillPath.children[0];
+	
+	if (source.getTag() !== "Graphics.RasterGraphics") {
+			ReductionManager.setInError(source, "Expression must be a raster graphics");
+			throw new ReductionError();
+	}
+	
+	let path = drawFillPath.children[1];
+	
+	if (path.getTag() !== "Graphics.Path") {
+		ReductionManager.setInError(path, "Expression must be a path");
+		throw new ReductionError();
+	}
+	
+	let context = source.get("Value");
+	
+	if (drawFillPath.getTag() === "Graphics.DrawPath") {
+		context.stroke(path.get("Value"));
+	}
+	else {
+		context.fill(path.get("Value"));
+	}
+	
+	return true;
+};
+
 Graphics.drawLine = async (drawLine, session) => {
 	let source = drawLine.children[0];
 	
@@ -384,15 +417,90 @@ Graphics.drawLine = async (drawLine, session) => {
 	return true;
 };
 
+Graphics.pathLine = async (pathLine, session) => {
+	let source = pathLine.children[0];
+	
+	switch (source.getTag()) {
+		case "Graphics.Path":
+			break;
+		
+		default: {
+			ReductionManager.setInError(source, "Expression must be a raster graphics");
+			throw new ReductionError();
+		}
+	}
+	
+	let path = source.get("Value");
+	let endx, endy;
+	
+	try {
+		switch (pathLine.getTag()) {
+			case "Graphics.PathLinePosPos": {
+					let startx = pathLine.children[1].evaluate();
+					let starty = pathLine.children[2].evaluate();
+					endx = pathLine.children[3].evaluate();
+					endy = pathLine.children[4].evaluate();
+					
+					path.moveTo(startx, starty);
+					path.lineTo(endx, endy);
+				}
+				break;
+			
+			case "Graphics.PathLinePosOffset": {
+					let startx = pathLine.children[1].evaluate();
+					let starty = pathLine.children[2].evaluate();
+					endx = startx + pathLine.children[3].evaluate();
+					endy = starty + pathLine.children[4].evaluate();
+					
+					path.moveTo(startx, starty);
+					path.lineTo(endx, endy);
+					
+				}
+				break;
+			
+			case "Graphics.PathLineToPos": {
+					endx = pathLine.children[1].evaluate();
+					endy = pathLine.children[2].evaluate();
+					
+					path.lineTo(endx, endy);
+				}
+				break;
+			
+			case "Graphics.PathLineToOffset": {
+					endx = startx + pathLine.children[1].evaluate();
+					endy = starty + pathLine.children[2].evaluate();
+					
+					path.lineTo(endx, endy);
+				}
+				break;
+		}
+		
+		source.set("X", endx);
+		source.set("Y", endy);
+		
+	}
+	catch (error) {
+		if (error instanceof EvaluationError) {
+			ReductionManager.setInError(pathLine, "Argument is not numeric");
+			throw new ReductionError();
+		}
+		
+		throw error;
+	}
+	
+	return true;
+};
+
 Graphics.drawFillRectangle = async (drawFillRectangle, session) => {
 	let source = drawFillRectangle.children[0];
 	
 	switch (source.getTag()) {
 		case "Graphics.RasterGraphics":
+		case "Graphics.Path":
 			break;
 		
 		default: {
-			ReductionManager.setInError(source, "Expression must be a raster graphics");
+			ReductionManager.setInError(source, "Expression must be a raster graphics or a path");
 			throw new ReductionError();
 		}
 	}
@@ -488,6 +596,38 @@ Graphics.drawFillRectangle = async (drawFillRectangle, session) => {
 					);
 				}
 				break;
+			
+			case "Graphics.PathRectanglePosPos": {
+					let x1 = drawFillRectangle.children[1].evaluate();
+					let y1 = drawFillRectangle.children[2].evaluate();
+					let x2 = drawFillRectangle.children[3].evaluate();
+					let y2 = drawFillRectangle.children[4].evaluate();
+					if (x2 < x1) { let tmp = x2; x2 = x1; x1 = tmp; }
+					if (y2 < y1) { let tmp = y2; y2 = y1; y1 = tmp; }
+					context.rect(
+						x1,
+						y1,
+						x2 - x1,
+						y2 - y1
+					);
+				}
+				break;
+			
+			case "Graphics.PathRectanglePosSize": {
+					let x1 = drawFillRectangle.children[1].evaluate();
+					let y1 = drawFillRectangle.children[2].evaluate();
+					let x2 = x1 + drawFillRectangle.children[3].evaluate();
+					let y2 = y1 + drawFillRectangle.children[4].evaluate();
+					if (x2 < x1) { let tmp = x2; x2 = x1; x1 = tmp; }
+					if (y2 < y1) { let tmp = y2; y2 = y1; y1 = tmp; }
+					context.rect(
+						x1,
+						y1,
+						x2 - x1,
+						y2 - y1
+					);
+				}
+				break;
 		}
 	}
 	catch (error) {
@@ -507,6 +647,7 @@ Graphics.drawFillEllipseArc = async (drawFillEllipseArc, session) => {
 	
 	switch (source.getTag()) {
 		case "Graphics.RasterGraphics":
+		case "Graphics.Path":
 			break;
 		
 		default: {
@@ -665,6 +806,61 @@ Graphics.drawFillEllipseArc = async (drawFillEllipseArc, session) => {
 					context.beginPath();
 					context.ellipse(cx, cy, rx, ry, 0, 0, 2 * Math.PI);
 					context.fill();
+				}
+				break;
+			
+			case "Graphics.PathEllipsePosPos": {
+					let x1 = drawFillEllipseArc.children[1].evaluate();
+					let y1 = drawFillEllipseArc.children[2].evaluate();
+					let x2 = drawFillEllipseArc.children[3].evaluate();
+					let y2 = drawFillEllipseArc.children[4].evaluate();
+					
+					if (x2 < x1) { let tmp = x2; x2 = x1; x1 = tmp; }
+					if (y2 < y1) { let tmp = y2; y2 = y1; y1 = tmp; }
+					
+					let semix = (x2 - x1) / 2;
+					let semiy = (y2 - y1) / 2;
+					
+					context.ellipse(x1 + semix, y1 + semiy, semix, semiy, 0, 0, 2 * Math.PI); 
+				}
+				break;
+					
+			case "Graphics.PathEllipsePosSize": {
+					let x1 = drawFillEllipseArc.children[1].evaluate();
+					let y1 = drawFillEllipseArc.children[2].evaluate();
+					let x2 = x1 + drawFillEllipseArc.children[3].evaluate();
+					let y2 = y1 + drawFillEllipseArc.children[4].evaluate();
+					
+					if (x2 < x1) { let tmp = x2; x2 = x1; x1 = tmp; }
+					if (y2 < y1) { let tmp = y2; y2 = y1; y1 = tmp; }
+					
+					let semix = (x2 - x1) / 2;
+					let semiy = (y2 - y1) / 2;
+					
+					context.ellipse(x1 + semix, y1 + semiy, semix, semiy, 0, 0, 2 * Math.PI); 
+				}
+				break;
+			
+			case "Graphics.PathEllipseCenterRadius": {
+					let cx = drawFillEllipseArc.children[1].evaluate();
+					let cy = drawFillEllipseArc.children[2].evaluate();
+					
+					let rx, ry;
+					let radius = drawFillEllipseArc.children[3];
+					if (radius.getTag() === "List.List") {
+						if (radius.children.length != 2) {
+							ReductionManager.setInError(radius, "Expression must be a 2-element list");
+							throw new ReductionError();
+						}
+						
+						rx = radius.children[0].evaluate();
+						ry = radius.children[1].evaluate();
+					}
+					else {
+						rx = ry = radius.evaluate();
+					}
+					
+					context.ellipse(cx, cy, rx, ry, 0, 0, 2 * Math.PI);
 				}
 				break;
 			
@@ -844,6 +1040,67 @@ Graphics.drawFillEllipseArc = async (drawFillEllipseArc, session) => {
 					context.lineTo(cx, cy);
 					context.closePath();
 					context.fill();
+				}
+				break;
+			
+			case "Graphics.PathArcPosPos": {
+					let x1 = drawFillEllipseArc.children[1].evaluate();
+					let y1 = drawFillEllipseArc.children[2].evaluate();
+					let x2 = drawFillEllipseArc.children[3].evaluate();
+					let y2 = drawFillEllipseArc.children[4].evaluate();
+					let as = drawFillEllipseArc.children[5].evaluate();
+					let ae = drawFillEllipseArc.children[6].evaluate();
+					
+					if (x2 < x1) { let tmp = x2; x2 = x1; x1 = tmp; }
+					if (y2 < y1) { let tmp = y2; y2 = y1; y1 = tmp; }
+					
+					let semix = (x2 - x1) / 2;
+					let semiy = (y2 - y1) / 2;
+					
+					context.ellipse(x1 + semix, y1 + semiy, semix, semiy, 0, as * Math.PI / 180, ae * Math.PI / 180, 2 * Math.PI); 
+				}
+				break;
+			
+			case "Graphics.PathArcPosSize": {
+					let x1 = drawFillEllipseArc.children[1].evaluate();
+					let y1 = drawFillEllipseArc.children[2].evaluate();
+					let x2 = x1 + drawFillEllipseArc.children[3].evaluate();
+					let y2 = y1 + drawFillEllipseArc.children[4].evaluate();
+					let as = drawFillEllipseArc.children[5].evaluate();
+					let ae = drawFillEllipseArc.children[6].evaluate();
+					
+					if (x2 < x1) { let tmp = x2; x2 = x1; x1 = tmp; }
+					if (y2 < y1) { let tmp = y2; y2 = y1; y1 = tmp; }
+					
+					let semix = (x2 - x1) / 2;
+					let semiy = (y2 - y1) / 2;
+					
+					context.ellipse(x1 + semix, y1 + semiy, semix, semiy, 0, as * Math.PI / 180, ae * Math.PI / 180, 2 * Math.PI); 
+				}
+				break;
+			
+			case "Graphics.PathArcCenterRadius": {
+					let cx = drawFillEllipseArc.children[1].evaluate();
+					let cy = drawFillEllipseArc.children[2].evaluate();
+					
+					let rx, ry;
+					let radius = drawFillEllipseArc.children[3];
+					if (radius.getTag() === "List.List") {
+						if (radius.children.length != 2) {
+							ReductionManager.setInError(radius, "Expression must be a 2-element list");
+							throw new ReductionError();
+						}
+						
+						rx = radius.children[0].evaluate();
+						ry = radius.children[1].evaluate();
+					}
+					else {
+						rx = ry = radius.evaluate();
+					}
+					let as = drawFillEllipseArc.children[4].evaluate();
+					let ae = drawFillEllipseArc.children[5].evaluate();
+					
+					context.ellipse(cx, cy, rx, ry, 0, as * Math.PI / 180, ae * Math.PI / 180, ae < as);
 				}
 				break;
 		}
@@ -1103,6 +1360,7 @@ Graphics.getPosAngle = async (getPosAngle, session) => {
 	
 	switch (source.getTag()) {
 		case "Graphics.RasterGraphics":
+		case "Graphics.Path":
 			break;
 		
 		default: {
@@ -1147,39 +1405,65 @@ Graphics.getPosAngle = async (getPosAngle, session) => {
 
 Graphics.setOffsetPosAngle = async (setOffsetPosAngle, session) => {
 	let source = setOffsetPosAngle.children[0];
+	let isPath;
 	
 	switch (source.getTag()) {
 		case "Graphics.RasterGraphics":
+			isPath = false;
+			break;
+		
+		case "Graphics.Path":
+			isPath = true;
 			break;
 		
 		default: {
-			ReductionManager.setInError(source, "Expression must be a raster graphics");
+			ReductionManager.setInError(source, "Expression must be a raster graphics or a path");
 			throw new ReductionError();
 		}
 	}
 	
 	try {
 		switch (setOffsetPosAngle.getTag()) {
-			case "Graphics.SetPos":
-				if (setOffsetPosAngle.children.length == 2) {
-					if (setOffsetPosAngle.children[1].getTag() !== "List.List") {
-						ReductionManager.setInError(setOffsetPosAngle.children[1], "Expression must be a list");
-						throw new ReductionError();
+			case "Graphics.SetPos": {
+					let x, y;
+					
+					if (setOffsetPosAngle.children.length == 2) {
+						if (setOffsetPosAngle.children[1].getTag() !== "List.List") {
+							ReductionManager.setInError(setOffsetPosAngle.children[1], "Expression must be a list");
+							throw new ReductionError();
+						}
+						
+						x = setOffsetPosAngle.children[1].children[0].evaluate();
+						y = setOffsetPosAngle.children[1].children[1].evaluate();
+					}
+					else { // 3
+						x = setOffsetPosAngle.children[1].evaluate();
+						y = setOffsetPosAngle.children[2].evaluate();
 					}
 					
-					source.set("X", setOffsetPosAngle.children[1].children[0].evaluate());
-					source.set("Y", setOffsetPosAngle.children[1].children[1].evaluate());
+					source.set("X", x);
+					source.set("Y", y);
+					
+					if (isPath) {
+						source.get("Value").moveTo(x, y);
+					}
+					
+					break;
 				}
-				else { // 3
-					source.set("X", setOffsetPosAngle.children[1].evaluate());
-					source.set("Y", setOffsetPosAngle.children[2].evaluate());
-				}
-				break;
 			
-			case "Graphics.OffsetPos":
-				source.set("X", source.get("X") + setOffsetPosAngle.children[1].evaluate());
-				source.set("Y", source.get("Y") + setOffsetPosAngle.children[2].evaluate());
-				break;
+			case "Graphics.OffsetPos": {
+					let x = source.get("X") + setOffsetPosAngle.children[1].evaluate();
+					let y = source.get("Y") + setOffsetPosAngle.children[2].evaluate();
+					
+					source.set("X", x);
+					source.set("Y", y);
+					
+					if (isPath) {
+						source.get("Value").moveTo(x, y);
+					}
+					
+					break;
+				}
 			
 			case "Graphics.Turtle.SetAngle":
 				source.set("Angle", setOffsetPosAngle.children[1].evaluate());
@@ -1205,8 +1489,15 @@ Graphics.setOffsetPosAngle = async (setOffsetPosAngle, session) => {
 Graphics.forward = async (forward, session) => {
 	let source = forward.children[0];
 	
+	let isPath;
+	
 	switch (source.getTag()) {
 		case "Graphics.RasterGraphics":
+			isPath = false;
+			break;
+		
+		case "Graphics.Path":
+			isPath = true;
 			break;
 		
 		default: {
@@ -1225,11 +1516,19 @@ Graphics.forward = async (forward, session) => {
 		let y1 = y0 - (units * Math.sin(angle));
 		
 		if (forward.getTag() === "Graphics.Turtle.ForwardDrawing") {
-			let context = source.get("Value");
-			context.beginPath();
-			context.moveTo(x0, y0);
-			context.lineTo(x1, y1);
-			context.stroke();
+			if (isPath) {
+				source.get("Value").lineTo(x1, y1);
+			}
+			else {
+				let context = source.get("Value");
+				context.beginPath();
+				context.moveTo(x0, y0);
+				context.lineTo(x1, y1);
+				context.stroke();
+			}
+		}
+		else { // forward without drawing
+			source.get("Value").moveTo(x1, y1);
 		}
 		
 		source.set("X", x1);
@@ -1360,28 +1659,51 @@ Graphics.setReducers = () => {
 	ReductionManager.addReducer("Graphics.GetPixel", Graphics.getPixel, "Graphics.getPixel");
 	ReductionManager.addReducer("Graphics.SetPixel", Graphics.setPixel, "Graphics.setPixel");
 	
+	ReductionManager.addReducer("Graphics.CreatePath", Graphics.createPath, "Graphics.createPath");
+	ReductionManager.addReducer("Graphics.DrawPath", Graphics.drawFillPath, "Graphics.drawFillPath");
+	ReductionManager.addReducer("Graphics.FillPath", Graphics.drawFillPath, "Graphics.drawFillPath");
+	
 	ReductionManager.addReducer("Graphics.DrawLinePosPos",    Graphics.drawLine, "Graphics.drawLine");
 	ReductionManager.addReducer("Graphics.DrawLinePosOffset", Graphics.drawLine, "Graphics.drawLine");
 	ReductionManager.addReducer("Graphics.DrawLineToPos",     Graphics.drawLine, "Graphics.drawLine");
 	ReductionManager.addReducer("Graphics.DrawLineToOffset",  Graphics.drawLine, "Graphics.drawLine");
+	ReductionManager.addReducer("Graphics.PathLinePosPos",    Graphics.pathLine, "Graphics.pathLine");
+	ReductionManager.addReducer("Graphics.PathLinePosOffset", Graphics.pathLine, "Graphics.pathLine");
+	ReductionManager.addReducer("Graphics.PathLineToPos",     Graphics.pathLine, "Graphics.pathLine");
+	ReductionManager.addReducer("Graphics.PathLineToOffset",  Graphics.pathLine, "Graphics.pathLine");
 	
 	ReductionManager.addReducer("Graphics.DrawRectanglePosPos",  Graphics.drawFillRectangle, "Graphics.drawFillRectangle");
 	ReductionManager.addReducer("Graphics.DrawRectanglePosSize", Graphics.drawFillRectangle, "Graphics.drawFillRectangle");
+	
 	ReductionManager.addReducer("Graphics.FillRectanglePosPos",  Graphics.drawFillRectangle, "Graphics.drawFillRectangle");
 	ReductionManager.addReducer("Graphics.FillRectanglePosSize", Graphics.drawFillRectangle, "Graphics.drawFillRectangle");
+	
+	ReductionManager.addReducer("Graphics.PathRectanglePosPos",  Graphics.drawFillRectangle, "Graphics.drawFillRectangle");
+	ReductionManager.addReducer("Graphics.PathRectanglePosSize", Graphics.drawFillRectangle, "Graphics.drawFillRectangle");
 	
 	ReductionManager.addReducer("Graphics.DrawEllipsePosPos",       Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
 	ReductionManager.addReducer("Graphics.DrawEllipsePosSize",      Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
 	ReductionManager.addReducer("Graphics.DrawEllipseCenterRadius", Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
+	
 	ReductionManager.addReducer("Graphics.FillEllipsePosPos",       Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
 	ReductionManager.addReducer("Graphics.FillEllipsePosSize",      Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
 	ReductionManager.addReducer("Graphics.FillEllipseCenterRadius", Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
+	
+	ReductionManager.addReducer("Graphics.PathEllipsePosPos",       Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
+	ReductionManager.addReducer("Graphics.PathEllipsePosSize",      Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
+	ReductionManager.addReducer("Graphics.PathEllipseCenterRadius", Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
+	
 	ReductionManager.addReducer("Graphics.DrawArcPosPos",           Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
 	ReductionManager.addReducer("Graphics.DrawArcPosSize",          Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
 	ReductionManager.addReducer("Graphics.DrawArcCenterRadius",     Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
+	
 	ReductionManager.addReducer("Graphics.FillArcPosPos",           Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
 	ReductionManager.addReducer("Graphics.FillArcPosSize",          Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
 	ReductionManager.addReducer("Graphics.FillArcCenterRadius",     Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
+	
+	ReductionManager.addReducer("Graphics.PathArcPosPos",           Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
+	ReductionManager.addReducer("Graphics.PathArcPosSize",          Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
+	ReductionManager.addReducer("Graphics.PathArcCenterRadius",     Graphics.drawFillEllipseArc, "Graphics.drawFillEllipseArc");
 	
 	ReductionManager.addReducer("Graphics.SetColor", Graphics.setColor, "Graphics.setColor");
 	

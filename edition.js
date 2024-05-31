@@ -92,29 +92,51 @@ Graphics.setEditions = function() {
 	Formulae.addEdition(this.messages.pathPixels, null, this.messages.leafSetPixel, () => Expression.multipleEdition("Graphics.SetPixel", 3, 0));
 	Formulae.addEdition(this.messages.pathPixels, null, this.messages.leafGetPixel, () => Expression.multipleEdition("Graphics.GetPixel", 3, 0));
 	
-	Formulae.addEdition(this.messages.pathLines, null, this.messages.leafDrawLinePosPos, () => Expression.multipleEdition("Graphics.DrawLinePosPos", 5, 0));
+	Formulae.addEdition(this.messages.pathPath, null, this.messages.leafCreatePath, () => Expression.replacingEdition("Graphics.CreatePath"));
+	Formulae.addEdition(this.messages.pathPath, null, this.messages.leafDrawPath,   () => Expression.multipleEdition("Graphics.DrawPath", 2, 0));
+	Formulae.addEdition(this.messages.pathPath, null, this.messages.leafFillPath,   () => Expression.multipleEdition("Graphics.FillPath", 2, 0));
+	
+	Formulae.addEdition(this.messages.pathLines, null, this.messages.leafDrawLinePosPos,    () => Expression.multipleEdition("Graphics.DrawLinePosPos",    5, 0));
 	Formulae.addEdition(this.messages.pathLines, null, this.messages.leafDrawLinePosOffset, () => Expression.multipleEdition("Graphics.DrawLinePosOffset", 5, 0));
-	Formulae.addEdition(this.messages.pathLines, null, this.messages.leafDrawLineToPos, () => Expression.multipleEdition("Graphics.DrawLineToPos", 3, 0));
-	Formulae.addEdition(this.messages.pathLines, null, this.messages.leafDrawLineToOffset, () => Expression.multipleEdition("Graphics.DrawLineToOffset", 3, 0));
+	Formulae.addEdition(this.messages.pathLines, null, this.messages.leafDrawLineToPos,     () => Expression.multipleEdition("Graphics.DrawLineToPos",     3, 0));
+	Formulae.addEdition(this.messages.pathLines, null, this.messages.leafDrawLineToOffset,  () => Expression.multipleEdition("Graphics.DrawLineToOffset",  3, 0));
+	Formulae.addEdition(this.messages.pathLines, null, this.messages.leafPathLinePosPos,    () => Expression.multipleEdition("Graphics.PathLinePosPos",    5, 0));
+	Formulae.addEdition(this.messages.pathLines, null, this.messages.leafPathLinePosOffset, () => Expression.multipleEdition("Graphics.PathLinePosOffset", 5, 0));
+	Formulae.addEdition(this.messages.pathLines, null, this.messages.leafPathLineToPos,     () => Expression.multipleEdition("Graphics.PathLineToPos",     3, 0));
+	Formulae.addEdition(this.messages.pathLines, null, this.messages.leafPathLineToOffset,  () => Expression.multipleEdition("Graphics.PathLineToOffset",  3, 0));
 	
 	Formulae.addEdition(this.messages.pathRectangle, null, this.messages.leafDrawRectanglePosPos,  () => Expression.multipleEdition("Graphics.DrawRectanglePosPos", 5, 0));
 	Formulae.addEdition(this.messages.pathRectangle, null, this.messages.leafDrawRectanglePosSize, () => Expression.multipleEdition("Graphics.DrawRectanglePosSize", 5, 0));
+	
 	Formulae.addEdition(this.messages.pathRectangle, null, this.messages.leafFillRectanglePosPos,  () => Expression.multipleEdition("Graphics.FillRectanglePosPos", 5, 0));
 	Formulae.addEdition(this.messages.pathRectangle, null, this.messages.leafFillRectanglePosSize, () => Expression.multipleEdition("Graphics.FillRectanglePosSize", 5, 0));
+	
+	Formulae.addEdition(this.messages.pathRectangle, null, this.messages.leafPathRectanglePosPos,  () => Expression.multipleEdition("Graphics.PathRectanglePosPos", 5, 0));
+	Formulae.addEdition(this.messages.pathRectangle, null, this.messages.leafPathRectanglePosSize, () => Expression.multipleEdition("Graphics.PathRectanglePosSize", 5, 0));
 	
 	Formulae.addEdition(this.messages.pathEllipse, null, this.messages.leafDrawEllipsePosPos, () => Expression.multipleEdition("Graphics.DrawEllipsePosPos", 5, 0));
 	Formulae.addEdition(this.messages.pathEllipse, null, this.messages.leafDrawEllipsePosSize, () => Expression.multipleEdition("Graphics.DrawEllipsePosSize", 5, 0));
 	Formulae.addEdition(this.messages.pathEllipse, null, this.messages.leafDrawEllipseCenterRadius, () => Expression.multipleEdition("Graphics.DrawEllipseCenterRadius", 4, 0));
+	
 	Formulae.addEdition(this.messages.pathEllipse, null, this.messages.leafFillEllipsePosPos, () => Expression.multipleEdition("Graphics.FillEllipsePosPos", 5, 0));
 	Formulae.addEdition(this.messages.pathEllipse, null, this.messages.leafFillEllipsePosSize, () => Expression.multipleEdition("Graphics.FillEllipsePosSize", 5, 0));
 	Formulae.addEdition(this.messages.pathEllipse, null, this.messages.leafFillEllipseCenterRadius, () => Expression.multipleEdition("Graphics.FillEllipseCenterRadius", 4, 0));
 	
+	Formulae.addEdition(this.messages.pathEllipse, null, this.messages.leafPathEllipsePosPos, () => Expression.multipleEdition("Graphics.PathEllipsePosPos", 5, 0));
+	Formulae.addEdition(this.messages.pathEllipse, null, this.messages.leafPathEllipsePosSize, () => Expression.multipleEdition("Graphics.PathEllipsePosSize", 5, 0));
+	Formulae.addEdition(this.messages.pathEllipse, null, this.messages.leafPathEllipseCenterRadius, () => Expression.multipleEdition("Graphics.PathEllipseCenterRadius", 4, 0));
+	
 	Formulae.addEdition(this.messages.pathArc, null, this.messages.leafDrawArcPosPos, () => Expression.multipleEdition("Graphics.DrawArcPosPos", 7, 0));
 	Formulae.addEdition(this.messages.pathArc, null, this.messages.leafDrawArcPosSize, () => Expression.multipleEdition("Graphics.DrawArcPosSize", 7, 0));
 	Formulae.addEdition(this.messages.pathArc, null, this.messages.leafDrawArcCenterRadius, () => Expression.multipleEdition("Graphics.DrawArcCenterRadius", 6, 0));
+	
 	Formulae.addEdition(this.messages.pathArc, null, this.messages.leafFillArcPosPos, () => Expression.multipleEdition("Graphics.FillArcPosPos", 7, 0));
 	Formulae.addEdition(this.messages.pathArc, null, this.messages.leafFillArcPosSize, () => Expression.multipleEdition("Graphics.FillArcPosSize", 7, 0));
 	Formulae.addEdition(this.messages.pathArc, null, this.messages.leafFillArcCenterRadius, () => Expression.multipleEdition("Graphics.FillArcCenterRadius", 6, 0));
+	
+	Formulae.addEdition(this.messages.pathArc, null, this.messages.leafPathArcPosPos, () => Expression.multipleEdition("Graphics.PathArcPosPos", 7, 0));
+	Formulae.addEdition(this.messages.pathArc, null, this.messages.leafPathArcPosSize, () => Expression.multipleEdition("Graphics.PathArcPosSize", 7, 0));
+	Formulae.addEdition(this.messages.pathArc, null, this.messages.leafPathArcCenterRadius, () => Expression.multipleEdition("Graphics.PathArcCenterRadius", 6, 0));
 	
 	Formulae.addEdition(this.messages.pathImage, null, this.messages.leafDrawImage, () => Expression.multipleEdition("Graphics.DrawImage", 4, 0));
 	
