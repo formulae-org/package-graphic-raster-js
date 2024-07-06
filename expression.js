@@ -109,12 +109,12 @@ Graphics.RasterGraphics = class extends Expression.NullaryExpression {
 		return [ "Value" ];
 	}
 	
-	setSerializationStrings(strings, promises) {
-		promises.push(Graphics.loadImage(this, "data:image/png;base64," + strings[0]));
+	async getSerializationStrings() {
+		return [ this.context.canvas.toDataURL("image/png").replace(/^data:image\/(png|jpeg);base64,/, "") ];
 	}
 	
-	getSerializationStrings() {
-		return [ this.context.canvas.toDataURL("image/png").replace(/^data:image\/(png|jpeg);base64,/, "") ];
+	setSerializationStrings(strings, promises) {
+		promises.push(Graphics.loadImage(this, "data:image/png;base64," + strings[0]));
 	}
 	
 	prepareDisplay(context) {
