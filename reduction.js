@@ -119,12 +119,14 @@ Graphics.getSize = async (getSize, session) => {
 	let result = Formulae.createExpression("List.List");
 	result.addChild(
 		CanonicalArithmetic.createInternalNumber(
-			CanonicalArithmetic.createInteger(canvas.width, session)
+			CanonicalArithmetic.createInteger(canvas.width, session),
+			session
 		)
 	);
 	result.addChild(
 		CanonicalArithmetic.createInternalNumber(
-			CanonicalArithmetic.createInteger(canvas.height, session)
+			CanonicalArithmetic.createInteger(canvas.height, session),
+			session
 		)
 	);
 	
@@ -1372,19 +1374,22 @@ Graphics.getPosAngle = async (getPosAngle, session) => {
 			result = Formulae.createExpression("List.List");
 			result.addChild(
 				CanonicalArithmetic.createInternalNumber(
-					CanonicalArithmetic.createDecimal(source.get("X"), session)
+					CanonicalArithmetic.createDecimal(source.get("X"), session),
+					session
 				)
 			);
 			result.addChild(
 				CanonicalArithmetic.createInternalNumber(
-					CanonicalArithmetic.createDecimal(source.get("Y"), session)
+					CanonicalArithmetic.createDecimal(source.get("Y"), session),
+					session
 				)
 			);
 			break;
 			
 		case "Graphics.Turtle.GetAngle":
 			result = CanonicalArithmetic.createInternalNumber(
-				CanonicalArithmetic.createDecimal(source.get("Angle"), session)
+				CanonicalArithmetic.createDecimal(source.get("Angle"), session),
+				session
 			);
 			break;
 	}
@@ -1598,7 +1603,8 @@ Graphics.getTextWidth = async (getTextWidth, session) => {
 			CanonicalArithmetic.createInteger(
 				source.get("Value").measureText(stringExpression.get("Value")).width,
 				session
-			)
+			),
+			session
 		)
 	);
 	return true;
