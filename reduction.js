@@ -22,14 +22,14 @@ export class Graphics extends Formulae.Package {}
 
 Graphics.createRasterGraphics = async (createRasterGraphics, session) => {
 	let expr = createRasterGraphics.children[0];
-	let width = CanonicalArithmetic.getNativeInteger(expr);
+	let width = Arithmetic.getNativeInteger(expr);
 	if (width === undefined || width <= 0) {
 		ReductionManager.setInError(expr, "Invalid value");
 		throw new ReductionError();
 	}
 	
 	expr = createRasterGraphics.children[1];
-	let height = CanonicalArithmetic.getNativeInteger(expr);
+	let height = Arithmetic.getNativeInteger(expr);
 	if (height === undefined || height <= 0) {
 		ReductionManager.setInError(expr, "Invalid value");
 		throw new ReductionError();
@@ -118,14 +118,14 @@ Graphics.getSize = async (getSize, session) => {
 	let canvas = source.get("Value").canvas;
 	let result = Formulae.createExpression("List.List");
 	result.addChild(
-		CanonicalArithmetic.createInternalNumber(
-			CanonicalArithmetic.createInteger(canvas.width, session),
+		Arithmetic.createInternalNumber(
+			Arithmetic.createInteger(canvas.width, session),
 			session
 		)
 	);
 	result.addChild(
-		CanonicalArithmetic.createInternalNumber(
-			CanonicalArithmetic.createInteger(canvas.height, session),
+		Arithmetic.createInternalNumber(
+			Arithmetic.createInteger(canvas.height, session),
 			session
 		)
 	);
@@ -151,7 +151,7 @@ Graphics.getPixel = async (getPixel, session) => {
 	
 	// x
 	
-	let x = CanonicalArithmetic.getNativeInteger(getPixel.children[1]);
+	let x = Arithmetic.getNativeInteger(getPixel.children[1]);
 	if (x === undefined) {
 		ReductionManager.setInError(getPixel.children[1], "Expression must be numeric");
 		throw new ReductionError();
@@ -166,7 +166,7 @@ Graphics.getPixel = async (getPixel, session) => {
 	
 	// y
 	
-	let y = CanonicalArithmetic.getNativeInteger(getPixel.children[2]);
+	let y = Arithmetic.getNativeInteger(getPixel.children[2]);
 	if (y === undefined) {
 		ReductionManager.setInError(getPixel.children[2], "Expression must be numeric");
 		throw new ReductionError();
@@ -209,7 +209,7 @@ Graphics.setPixel = async (setPixel, session) => {
 	
 	// x
 	
-	let x = CanonicalArithmetic.getNativeInteger(setPixel.children[1]);
+	let x = Arithmetic.getNativeInteger(setPixel.children[1]);
 	if (x === undefined) {
 		ReductionManager.setInError(setPixel.children[1], "Expression must be numeric");
 		throw new ReductionError();
@@ -224,7 +224,7 @@ Graphics.setPixel = async (setPixel, session) => {
 	
 	// y
 	
-	let y = CanonicalArithmetic.getNativeInteger(setPixel.children[2]);
+	let y = Arithmetic.getNativeInteger(setPixel.children[2]);
 	if (y === undefined) {
 		ReductionManager.setInError(setPixel.children[2], "Expression must be numeric");
 		throw new ReductionError();
@@ -1373,22 +1373,22 @@ Graphics.getPosAngle = async (getPosAngle, session) => {
 		case "Graphics.GetPos":
 			result = Formulae.createExpression("List.List");
 			result.addChild(
-				CanonicalArithmetic.createInternalNumber(
-					CanonicalArithmetic.createDecimal(source.get("X"), session),
+				Arithmetic.createInternalNumber(
+					Arithmetic.createDecimal(source.get("X"), session),
 					session
 				)
 			);
 			result.addChild(
-				CanonicalArithmetic.createInternalNumber(
-					CanonicalArithmetic.createDecimal(source.get("Y"), session),
+				Arithmetic.createInternalNumber(
+					Arithmetic.createDecimal(source.get("Y"), session),
 					session
 				)
 			);
 			break;
 			
 		case "Graphics.Turtle.GetAngle":
-			result = CanonicalArithmetic.createInternalNumber(
-				CanonicalArithmetic.createDecimal(source.get("Angle"), session),
+			result = Arithmetic.createInternalNumber(
+				Arithmetic.createDecimal(source.get("Angle"), session),
 				session
 			);
 			break;
@@ -1599,8 +1599,8 @@ Graphics.getTextWidth = async (getTextWidth, session) => {
 	}
 	
 	getTextWidth.replaceBy(
-		CanonicalArithmetic.createInternalNumber(
-			CanonicalArithmetic.createInteger(
+		Arithmetic.createInternalNumber(
+			Arithmetic.createInteger(
 				source.get("Value").measureText(stringExpression.get("Value")).width,
 				session
 			),
