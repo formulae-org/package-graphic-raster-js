@@ -106,11 +106,11 @@ Graphics.RasterGraphics = class extends Expression.NullaryExpression {
 	}
 	
 	getSerializationNames() {
-		return [ "Value" ];
+		return [ "Value", "Format" ];
 	}
 	
 	async getSerializationStrings() {
-		return [ this.context.canvas.toDataURL("image/png").replace(/^data:image\/(png|jpeg);base64,/, "") ];
+		return [ this.context.canvas.toDataURL("image/png").replace(/^data:image\/(png|jpeg);base64,/, ""), "image/png" ];
 	}
 	
 	setSerializationStrings(strings, promises) {
