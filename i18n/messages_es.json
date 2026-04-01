@@ -8,7 +8,7 @@
 	"nameCreateRasterGraphics"     : "Crear imagen",
 	"mnemonicCreateRasterGraphics" : "CrearImagen",
 	"childrenCreateRasterGraphics" : [ "Ancho", "Alto", "Color de fondo" ],
-	"leafCreateRasterGraphics"     : "Crear imágen",
+	"leafCreateRasterGraphics"     : "Crear imagen",
 
 	"nameCopyRasterGraphics"     : "Copia de imagen",
 	"mnemonicCopyRasterGraphics" : "CopiarImagen",
@@ -17,7 +17,7 @@
 
 	"nameGetSize"     : "Tamaño de imagen",
 	"mnemonicGetSize" : "TamañoImagen",
-	"childGetSize"    : "Imágen",
+	"childGetSize"    : "Imagen",
 	"leafGetSize"     : "Tamaño de imagen",
 
 	"pathPixels" : "Imagen.Operaciones con pixeles",
@@ -27,7 +27,7 @@
 	"childrenGetPixel" : [ "El pintor", "coordenada x", "coordenada y" ],
 	"leafGetPixel"     : "Obtener pixel",
 
-	"nameSetPixel"     : "Fijar un pixel en una imágen",
+	"nameSetPixel"     : "Fijar un pixel en una imagen",
 	"mnemonicSetPixel" : "FijarPixel",
 	"childrenSetPixel" : [ "El pintor", "coordenada x", "coordenada y", "Color" ],
 	"leafSetPixel"     : "Fijar pixel",
@@ -75,12 +75,12 @@
 
 	"namePathLinePosPos"     : "Añadir al camino línea de posición a posición",
 	"mnemonicPathLinePosPos" : "CaminoLíneaPosPos",
-	"childrenPathLinePosPos" : [ "Contexto gráfico", "X incial", "Y inicial", "X inicial", "Y final" ],
+	"childrenPathLinePosPos" : [ "Contexto gráfico", "X inicial", "Y inicial", "X inicial", "Y final" ],
 	"leafPathLinePosPos"     : "Añadir al camino línea de posición a posición",
 
 	"namePathLinePosOffset"     : "Añadir al camino línea de posición a desplazamiento",
 	"mnemonicPathLinePosOffset" : "CaminoLíneaPosDesplazamiento",
-	"childrenPathLinePosOffset" : [ "Conetxto gráfico", "X incial", "Y incial", "Desplazamineto x", "Desplazamiento y" ],
+	"childrenPathLinePosOffset" : [ "Contexto gráfico", "X inicial", "Y inicial", "Desplazamiento x", "Desplazamiento y" ],
 	"leafPathLinePosOffset"     : "Añadir al camino línea de posición a desplazamiento",
 
 	"namePathLineToPos"     : "Añadir al camino línea de última posición a posición",
@@ -118,7 +118,7 @@
 	"childGetColor"    : "Pintor",
 	"leafGetColor"     : "Obtener color",
 
-	"pathRectangle" : "Imagen.Ractángulo",
+	"pathRectangle" : "Imagen.Rectángulo",
 
 	"nameDrawRectanglePosPos"     : "Dibujar rectángulo de esquina a esquina",
 	"mnemonicDrawRectanglePosPos" : "DibujarRectánguloPosPos",
@@ -200,7 +200,7 @@
 	"leafDrawArcPosSize"     : "Dibujar arco de esquina a tamaño",
 
 	"nameDrawArcCenterRadius"     : "Dibujar arco dado centro y radio",
-	"mnemonicDrawArcCenterRadius" : "DrawArcCentroRadio",
+	"mnemonicDrawArcCenterRadius" : "DibujarArcoCentroRadio",
 	"childrenArcCenterRadius"     : [ "Pintor", "X centro", "Y centro", "Radio", "Ángulo inicial", "Ángulo final" ],
 	"leafDrawArcCenterRadius"     : "Dibujar arco dado centro y radio",
 
@@ -230,10 +230,10 @@
 
 	"pathImage" : "Imagen.Imagen",
 
-	"nameDrawImage"     : "Dibujar imágen",
+	"nameDrawImage"     : "Dibujar imagen",
 	"mnemonicDrawImage" : "DibujarImagen",
-	"childrenDrawImage" : [ "Pintor", "Imágen", "Posición x", "Posición y" ],
-	"leafDrawImage"     : "Dibujo de imágen",
+	"childrenDrawImage" : [ "Pintor", "Imagen", "Posición x", "Posición y" ],
+	"leafDrawImage"     : "Dibujo de imagen",
 
 	"pathText" : "Imagen.Texto",
 
@@ -249,14 +249,14 @@
 
 	"pathTurtle" : "Imagen.Tortuga",
 
-	"nameGetAngle"     : "Obtención el ángulo actual del pintor de imagen",
+	"nameGetAngle"     : "Obtención del ángulo actual del pintor de imagen",
 	"mnemonicGetAngle" : "ObtenerÁngulo",
 	"childGetAngle"    : "Pintor",
 	"leafGetAngle"     : "Obtener ángulo",
 
 	"nameSetAngle"     : "Fijar ángulo del pintor de imagen",
 	"mnemonicSetAngle" : "FijarÁngulo",
-	"childrenSetAngle" : [ "Pintor", "Angulo (grados)" ],
+	"childrenSetAngle" : [ "Pintor", "Ángulo (grados)" ],
 	"leafSetAngle"     : "Fijar ángulo",
 
 	"nameForwardDrawing"     : "Avanzar dibujando",
@@ -304,14 +304,14 @@
 	"nameSetCoordinatesPixels1Based"     : "Fijar coordenadas para pixeles basados en 1",
 	"mnemonicSetCoordinatesPixels1Based" : "FijarCoordenadasPixelesBasados1",
 	"childSetCoordinatesPixels1Based"    : "Pintor",
-	"leafSetCoordinatesPixels1Based"     : "Fijar coordenadas para pixeles basados en 0",
+	"leafSetCoordinatesPixels1Based"     : "Fijar coordenadas para pixeles basados en 1",
 
 	"nameSetCoordinatesMath"     : "Fijar coordenadas matemáticas",
 	"mnemonicSetCoordinatesMath" : "FijarCoordenadasMatemáticas",
 	"childrenSetCoordinatesMath" : [ "Pintor", "x esquina inferior izquierda", "y esquina inferior izquierda", "x esquina superior derecha", "y esquina superior derecha" ],
 	"leafSetCoordinatesMath"     : "Fijar coordenadas matemáticas",
 
-	"pathState": "Imágen.Estado",
+	"pathState": "Imagen.Estado",
 
 	"nameSetAntialias"     : "Fijar no solapamiento",
 	"mnemonicSetAntialias" : "FijarNoSolapamiento",

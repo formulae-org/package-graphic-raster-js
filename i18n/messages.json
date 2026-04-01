@@ -249,7 +249,7 @@
 
 	"pathTurtle" : "Graphics.Turtle",
 
-	"nameGetAngle"     : "Get the current angle a raster graphics",
+	"nameGetAngle"     : "Get the current angle of a raster graphics",
 	"mnemonicGetAngle" : "GetAngle",
 	"childGetAngle"    : "The painter",
 	"leafGetAngle"     : "Get current angle",
@@ -308,7 +308,7 @@
 
 	"nameSetCoordinatesMath"     : "Set coordinates for math",
 	"mnemonicSetCoordinatesMath" : "SetCoordinatesMath",
-	"childrenSetCoordinatesMath" : [ "A painter", "left bottom x", "left bottom y", "rigth top x", "right top y" ],
+	"childrenSetCoordinatesMath" : [ "A painter", "left bottom x", "left bottom y", "right top x", "right top y" ],
 	"leafSetCoordinatesMath"     : "Set coordinates for math",
 
 	"pathState": "Graphics.State",
