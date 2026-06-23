@@ -16,7 +16,7 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-'use strict';
+"use strict";
 
 export class Graphics extends Formulae.Package {}
 
@@ -58,7 +58,7 @@ Graphics.createRasterGraphics = async (createRasterGraphics, session) => {
 	
 	if (color !== null) {
 		let bkpFillStyle = context.fillStyle;
-
+		
 		context.fillStyle =
 			"rgba(" +
 			(color.get("Red")   * 100.0).toString() + "%," +
@@ -67,7 +67,7 @@ Graphics.createRasterGraphics = async (createRasterGraphics, session) => {
 			color.get("Alpha").toString() + ")"
 		;
 		context.fillRect(0, 0, width, height);
-
+		
 		context.fillStyle = bkpFillStyle;
 	}
 	
@@ -89,12 +89,12 @@ Graphics.copyRasterGraphics = async (copyRasterGraphics, session) => {
 	}
 	
 	let oldCanvas = source.get("Value").canvas;
-    let newCanvas = document.createElement("canvas");
-
-    newCanvas.width = oldCanvas.width;
-    newCanvas.height = oldCanvas.height;
-    let newContext = newCanvas.getContext("2d");
-    newContext.drawImage(oldCanvas, 0, 0);
+	let newCanvas = document.createElement("canvas");
+	
+	newCanvas.width = oldCanvas.width;
+	newCanvas.height = oldCanvas.height;
+	let newContext = newCanvas.getContext("2d");
+	newContext.drawImage(oldCanvas, 0, 0);
 	
 	let result = Formulae.createExpression("Graphics.RasterGraphics");
 	result.set("Value", newContext);
@@ -684,7 +684,7 @@ Graphics.drawFillEllipseArc = async (drawFillEllipseArc, session) => {
 					}
 				}
 				break;
-					
+			
 			case "Graphics.DrawEllipsePosSize": {
 					let x1 = drawFillEllipseArc.children[1].evaluate();
 					let y1 = drawFillEllipseArc.children[2].evaluate();
@@ -763,7 +763,7 @@ Graphics.drawFillEllipseArc = async (drawFillEllipseArc, session) => {
 					context.fill();
 				}
 				break;
-					
+			
 			case "Graphics.FillEllipsePosSize": {
 					let x1 = drawFillEllipseArc.children[1].evaluate();
 					let y1 = drawFillEllipseArc.children[2].evaluate();
@@ -822,7 +822,7 @@ Graphics.drawFillEllipseArc = async (drawFillEllipseArc, session) => {
 					context.ellipse(x1 + semix, y1 + semiy, semix, semiy, 0, 0, 2 * Math.PI); 
 				}
 				break;
-					
+			
 			case "Graphics.PathEllipsePosSize": {
 					let x1 = drawFillEllipseArc.children[1].evaluate();
 					let y1 = drawFillEllipseArc.children[2].evaluate();
@@ -1144,7 +1144,7 @@ Graphics.setColor = async (setColor, session) => {
 	
 	return true;
 };
-	
+
 Graphics.setState = async (setState, session) => {
 	let source = setState.children[0];
 	
@@ -1609,7 +1609,7 @@ Graphics.getTextWidth = async (getTextWidth, session) => {
 	);
 	return true;
 };
-	
+
 Graphics.drawText = async (drawText, session) => {
 	let source = drawText.children[0];
 	
